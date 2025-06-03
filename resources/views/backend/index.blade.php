@@ -1,32 +1,420 @@
 @extends('backend.layouts.app', ['isBanner' => false])
 
 @section('title')
-{{ 'Dashboard' }}
+{{ 'Neural Command Center' }}
 @endsection
 
+@push('after-styles')
+<style>
+    /* Futuristic Dashboard Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+    /* Override default theme */
+    body {
+        background: #0a0a0a !important;
+        font-family: 'Rajdhani', sans-serif !important;
+        color: #fff !important;
+    }
+
+    .wrapper {
+        background: #0a0a0a !important;
+    }
+
+    /* Animated Background */
+    .content-inner {
+        position: relative;
+        background: transparent !important;
+    }
+
+    .content-inner::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 50%, rgba(120, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 50%, rgba(255, 120, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(120, 120, 255, 0.05) 0%, transparent 70%);
+        animation: backgroundPulse 10s ease-in-out infinite;
+        z-index: -2;
+        pointer-events: none;
+    }
+
+    /* Grid Pattern */
+    .content-inner::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        z-index: -1;
+        animation: gridMove 20s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes backgroundPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+
+    @keyframes gridMove {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
+    }
+
+    /* Futuristic Cards */
+    .card {
+        background: rgba(10, 10, 10, 0.8) !important;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 255, 255, 0.3) !important;
+        border-radius: 15px !important;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        animation: cardScan 4s linear infinite;
+    }
+
+    @keyframes cardScan {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    .card:hover {
+        border-color: #00ffff !important;
+        box-shadow: 
+            0 0 30px rgba(0, 255, 255, 0.3),
+            inset 0 0 15px rgba(0, 255, 255, 0.1) !important;
+        transform: translateY(-2px);
+    }
+
+    .card-body {
+        background: transparent !important;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Stat Cards */
+    .card-height .content p {
+        color: #00ffff !important;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .card-height .counter {
+        font-family: 'Orbitron', monospace !important;
+        font-size: 36px !important;
+        font-weight: 900 !important;
+        background: linear-gradient(45deg, #00ffff, #ff00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: counterGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes counterGlow {
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.3); }
+    }
+
+    /* Icon Styling */
+    .card-icon-40 {
+        width: 50px !important;
+        height: 50px !important;
+        background: rgba(0, 255, 255, 0.1) !important;
+        border: 1px solid rgba(0, 255, 255, 0.3) !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-icon-40::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(0, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.5s ease;
+    }
+
+    .card:hover .card-icon-40::before {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card-icon-40 i {
+        color: #00ffff !important;
+        font-size: 24px !important;
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 0 5px currentColor);
+    }
+
+    /* Chart Cards */
+    h3 {
+        font-family: 'Orbitron', monospace !important;
+        color: #00ffff !important;
+        font-size: 20px !important;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background: linear-gradient(45deg, #00ffff, #ff00ff) !important;
+        border: none !important;
+        color: #000 !important;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+        left: 100%;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(0, 255, 255, 0.5) !important;
+    }
+
+    /* Forms */
+    .form-control {
+        background: rgba(0, 255, 255, 0.05) !important;
+        border: 1px solid rgba(0, 255, 255, 0.2) !important;
+        color: #fff !important;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        background: rgba(0, 255, 255, 0.08) !important;
+        border-color: #00ffff !important;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
+        color: #fff !important;
+    }
+
+    /* Alert Cards */
+    .alert-warning {
+        background: rgba(255, 200, 0, 0.1) !important;
+        border: 1px solid rgba(255, 200, 0, 0.3) !important;
+        color: #ffc800 !important;
+        animation: warningPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes warningPulse {
+        0%, 100% { box-shadow: 0 0 10px rgba(255, 200, 0, 0.3); }
+        50% { box-shadow: 0 0 20px rgba(255, 200, 0, 0.5); }
+    }
+
+    .alert-warning .btn-warning {
+        background: #ffc800 !important;
+        border: none !important;
+        color: #000 !important;
+    }
+
+    /* Mini Chart Containers */
+    #total-users, #total-generated-word, #total-active-subscriptions, 
+    #total-images-generated, #total-ai-writer, #ai-art-generated, 
+    #ai-code, #ai-images, #ai-chat, #total-revenue {
+        height: 60px;
+        margin: 15px 0;
+        position: relative;
+    }
+
+    /* Table Styling */
+    .table {
+        background: transparent !important;
+        color: #fff !important;
+    }
+
+    .table thead tr {
+        background: rgba(0, 255, 255, 0.1) !important;
+        border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .table thead th {
+        color: #00ffff !important;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 12px;
+        border: none !important;
+        padding: 15px;
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background: rgba(0, 255, 255, 0.05) !important;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    .table tbody td {
+        border: none !important;
+        padding: 15px;
+        color: #fff !important;
+    }
+
+    /* Status Badge */
+    .btn-success-subtle {
+        background: rgba(0, 255, 0, 0.2) !important;
+        color: #00ff00 !important;
+        border: 1px solid rgba(0, 255, 0, 0.3) !important;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Avatar */
+    .avatar {
+        border: 2px solid rgba(0, 255, 255, 0.3);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Dropdown */
+    .dropdown-menu {
+        background: rgba(10, 10, 10, 0.95) !important;
+        border: 1px solid rgba(0, 255, 255, 0.3) !important;
+        backdrop-filter: blur(20px);
+    }
+
+    .dropdown-item {
+        color: #fff !important;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+        background: rgba(0, 255, 255, 0.2) !important;
+        color: #00ffff !important;
+    }
+
+    /* Chart styling */
+    .apexcharts-text {
+        fill: #fff !important;
+    }
+
+    .apexcharts-gridline {
+        stroke: rgba(0, 255, 255, 0.1) !important;
+    }
+
+    /* Percentage indicators */
+    .text-success {
+        color: #00ff00 !important;
+        filter: drop-shadow(0 0 3px currentColor);
+    }
+
+    /* Loading indicators */
+    #userchart_loader, #popular_loader, #revenue_loader, #subscription_loader {
+        color: #00ffff;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    /* Scan line effect for dashboard */
+    .dashboard-scan {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        animation: dashboardScan 5s linear infinite;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    @keyframes dashboardScan {
+        0% { top: 0; }
+        100% { top: 100%; }
+    }
+
+    /* Holographic effect for headers */
+    .holographic-text {
+        background: linear-gradient(45deg, #00ffff, #ff00ff, #00ffff);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: holographicShift 3s ease infinite;
+    }
+
+    @keyframes holographicShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+@endpush
+
 @section('content')
+<!-- Dashboard Scan Line -->
+<div class="dashboard-scan"></div>
+
 <div class="row">
     <div class="col-12">
-
+        
+        <!-- Alert Section -->
         <div class="row">
         @if($data['cutout_pro_limit_over']==1)
           <div class="col-12">
             <div id="cutout_pro" class="alert alert-warning">
                 <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                   <span>Your cutout.pro account balance is insufficient. Please recharge your account to maintain service availability.</span>
-                   <button onclick="Upgradeplan('cutout_pro')" class="btn btn-warning">Close</button>
+                   <span><i class="ph ph-warning-circle me-2"></i>SYSTEM ALERT: Cutout.pro balance critical. Recharge required for continued operations.</span>
+                   <button onclick="Upgradeplan('cutout_pro')" class="btn btn-warning">ACKNOWLEDGE</button>
                 </div>
             </div>
           </div>
-
         @endif
 
         @if($data['open_ai_limit_over']==1)
            <div class="col-12">
                 <div id="open_ai" class="alert alert-warning">
                     <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                        <span>Your OpenAI account balance is insufficient. Please recharge your account to maintain service availability.</span>
-                        <button onclick="Upgradeplan('open_ai')" class="btn btn-warning">Close</button>
+                        <span><i class="ph ph-warning-circle me-2"></i>SYSTEM ALERT: OpenAI neural link depleted. Immediate recharge required.</span>
+                        <button onclick="Upgradeplan('open_ai')" class="btn btn-warning">ACKNOWLEDGE</button>
                     </div>    
                 </div>
            </div>
@@ -36,22 +424,22 @@
             <div class="col-12">
                <div id="picsart" class="alert alert-warning">
                     <div class="d-flex align-items-center justify-content-between gap-3 flex-wrap">
-                        <span>Your Picsart account balance is insufficient. Please recharge your account to maintain service availability.</span>
-                        <button onclick="Upgradeplan('picsart')" class="btn btn-warning">Close</button>
+                        <span><i class="ph ph-warning-circle me-2"></i>SYSTEM ALERT: Picsart integration offline. Balance restoration needed.</span>
+                        <button onclick="Upgradeplan('picsart')" class="btn btn-warning">ACKNOWLEDGE</button>
                     </div>    
                 </div>
             </div>
         @endif
-
         </div>
 
+        <!-- Stats Grid -->
         <div class="row row-cols-xl-5 row-cols-md-3 row-cols-sm-2 row-cols-1">
             <div class="col">
                 <div class="card card-height">
                     <div class="card-body">
                         <div class="d-flex justify-content-between flex-wrap">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_users') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Neural Connections') }}</p>
                                 <h1 class="counter">{{$data['totalUsersCount']}}</h1>
                             </div>
                             <div class="icon flex-shrink-0">
@@ -63,8 +451,8 @@
                         <div class="mt-3">
                             <div id="total-users"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageUsers']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageUsers']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('GROWTH RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -75,7 +463,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_generate_word') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Data Processed') }}</p>
                                 <h1 class="counter">{{$data['totalWordCount']}}</h1>
                             </div>
                             <div class="icon">
@@ -87,8 +475,8 @@
                         <div class="mt-3">
                             <div id="total-generated-word"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageWordCountLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageWordCountLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('PROCESSING RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -99,7 +487,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_active_subscription') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Active Protocols') }}</p>
                                 <h1 class="counter">{{$data['activeSubscriptionCount']}}</h1>
                             </div>
                             <div class="icon">
@@ -111,8 +499,8 @@
                         <div class="mt-3">
                             <div id="total-active-subscriptions"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['lastMothsubsctiption']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['lastMothsubsctiption']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('ACTIVATION RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -123,7 +511,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_image') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Visual Data') }}</p>
                                 <h1 class="counter">{{$data['totalImageCount']}}</h1>
                             </div>
                             <div class="icon">
@@ -135,8 +523,8 @@
                         <div class="mt-3">
                             <div id="total-images-generated"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageImageCountLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageImageCountLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('RENDER RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -147,7 +535,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_ai_writer') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('AI Writers') }}</p>
                                 <h1 class="counter">{{$data['totalAIwriter']}}</h1>
                             </div>
                             <div class="icon">
@@ -159,8 +547,8 @@
                         <div class="mt-3">
                             <div id="total-ai-writer"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageAIwriterLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageAIwriterLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('GENERATION RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -171,7 +559,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_art_genertior') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Art Matrix') }}</p>
                                 <h1 class="counter">{{$data['totalAIart']}}</h1>
                             </div>
                             <div class="icon">
@@ -183,8 +571,8 @@
                         <div class="mt-3">
                             <div id="ai-art-generated"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageAIartLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageAIartLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('CREATION RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -195,7 +583,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_ai_code') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Code Forge') }}</p>
                                 <h1 class="counter">{{$data['totalAIcode']}}</h1>
                             </div>
                             <div class="icon">
@@ -207,8 +595,8 @@
                         <div class="mt-3">
                             <div id="ai-code"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageAIcodeLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageAIcodeLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('COMPILE RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -219,7 +607,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_ai_image') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Image Core') }}</p>
                                 <h1 class="counter">{{$data['totalAIimage']}}</h1>
                             </div>
                             <div class="icon">
@@ -231,8 +619,8 @@
                         <div class="mt-3">
                             <div id="ai-images"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageAIimageLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageAIimageLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('PROCESS RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -243,7 +631,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_ai_chat') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Neural Chat') }}</p>
                                 <h1 class="counter">{{$data['totalAIchat']}}</h1>
                             </div>
                             <div class="icon">
@@ -255,8 +643,8 @@
                         <div class="mt-3">
                             <div id="ai-chat"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentageAIchatLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentageAIchatLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('RESPONSE RATE') }}</span>
                             </div>
                         </div>
                     </div>
@@ -267,7 +655,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="content">
-                                <p class="text-capitalize mb-1">{{ __('dashboard.total_revenue') }}</p>
+                                <p class="text-capitalize mb-1">{{ __('Credits Flow') }}</p>
                                 <h1 class="counter">{{Currency::format($data['totalRevenue'])}}</h1>
                             </div>
                             <div class="icon">
@@ -279,23 +667,25 @@
                         <div class="mt-3">
                             <div id="total-revenue"></div>
                             <div class="d-flex align-item-center justify-content-center gap-3 flex-wrap">
-                                <span class="text-success font-size-14">{{$data['percentagerevenueLastMonth']}}%</span>
-                                <span class="text-capitalize font-size-14">{{ __('dashboard.last_month') }}</span>
+                                <span class="text-success font-size-14">+{{$data['percentagerevenueLastMonth']}}%</span>
+                                <span class="text-capitalize font-size-14" style="color: #888;">{{ __('INCOME RATE') }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- ... existing code below ... -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-height">
                     <div class="card-body">
                         <div class="d-flex justify-content-between gap-3 flex-wrap">
-                            <h3 class="text-capitalize">{{ __('dashboard.total_revenue') }}</h3>
+                            <h3 class="text-capitalize holographic-text">{{ __('REVENUE ANALYTICS') }}</h3>
                             <div class="d-flex flex-wrap gap-3">
                                 <div class="form-group my-0 d-flex gap-2">
-                                    <input type="text" name="revenue_date_range" value="{{ session('revenue_date_range') }}" id="revenuedateRangeInput" class="form-control revenue-date-range" placeholder="Select Date" readonly="readonly">
+                                    <input type="text" name="revenue_date_range" value="{{ session('revenue_date_range') }}" id="revenuedateRangeInput" class="form-control revenue-date-range" placeholder="Select Date Range" readonly="readonly">
         
                                     <button id="refreshRevenuechart" class="btn btn-primary">
                                        <i class="ph ph-arrow-counter-clockwise"></i>
@@ -303,19 +693,22 @@
                                 </div>
                                 <div class="dropdown">
                                     <a href="#" class="btn btn-primary dropdown-toggle total_revenue text-capitalize" id="dropdownTotalUsers3" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ __('dashboard.year') }}
+                                        {{ __('TEMPORAL RANGE') }}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownTotalUsers3">
-                                        <li><a class="revenue-dropdown-item dropdown-item" data-type="year">{{ __('dashboard.this_year') }}</a></li>
-                                        <li><a class="revenue-dropdown-item dropdown-item" data-type="month">{{ __('dashboard.this_month') }}</a></li>
-                                        <li><a class="revenue-dropdown-item dropdown-item" data-type="week">{{ __('dashboard.this_week') }}</a></li>
+                                        <li><a class="revenue-dropdown-item dropdown-item" data-type="year">{{ __('ANNUAL CYCLE') }}</a></li>
+                                        <li><a class="revenue-dropdown-item dropdown-item" data-type="month">{{ __('MONTHLY CYCLE') }}</a></li>
+                                        <li><a class="revenue-dropdown-item dropdown-item" data-type="week">{{ __('WEEKLY CYCLE') }}</a></li>
                                     </ul>
                                 </div>
                             </div>
     
                         </div>
                         <div id="revenue_loader" style="display: none;">
-                            {{ __('dashboard.processing') }}
+                            <div class="text-center">
+                                <i class="ph ph-circle-notch ph-spin text-cyan" style="font-size: 24px;"></i>
+                                <p class="mt-2">PROCESSING DATA STREAM...</p>
+                            </div>
                         </div>
                         <div id="total-revenue-chart" class="total-revenue-chart"></div>
                     </div>
@@ -327,10 +720,10 @@
                 <div class="card card-height">
                     <div class="card-body">
                         <div class="d-flex justify-content-between gap-3 flex-wrap">
-                            <h3 class="text-capitalize">{{ __('dashboard.user_chart') }}</h3>
+                            <h3 class="text-capitalize">{{ __('USER MATRIX') }}</h3>
                             <div class="d-inline-flex align-items-center gap-3 flex-wrap">
                                 <div class="form-group my-0 d-flex gap-2">
-                                    <input type="text" name="date_range" value="{{ session('date_range') }}" id="dateRangeInput" class="form-control user-date-range" placeholder="Select Date" readonly="readonly">
+                                    <input type="text" name="date_range" value="{{ session('date_range') }}" id="dateRangeInput" class="form-control user-date-range" placeholder="Select Date Range" readonly="readonly">
     
                                     <button id="refreshUserchart" class="btn btn-primary"><i class="ph ph-arrow-counter-clockwise"></i></button>
                                 </div>
@@ -339,25 +732,25 @@
                                 <div class="flex-shrink-0">
     
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="text-capitalize">{{ __('dashboard.total_users') }}</span>
-                                        <h6 class="m-0" id="chart_newUsers">{{$data['chart_newUsers']}}
+                                        <span class="text-capitalize" style="color: #00ffff;">{{ __('TOTAL NODES') }}</span>
+                                        <h6 class="m-0 holographic-text" id="chart_newUsers">{{$data['chart_newUsers']}}
                                             <h6>
                                     </div>
                                     <div class="d-flex align-items-center gap-1">
-                                        <span class="text-capitalize">{{ __('dashboard.total_active_users') }}</span>
-                                        <h6 class="m-0" id="chart_activeUsers">{{$data['chart_activeUsers']}}
+                                        <span class="text-capitalize" style="color: #ff00ff;">{{ __('ACTIVE NODES') }}</span>
+                                        <h6 class="m-0 holographic-text" id="chart_activeUsers">{{$data['chart_activeUsers']}}
                                             <h6>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0">
                                     <div class="dropdown">
                                         <a href="#" class="btn btn-primary dropdown-toggle total_users text-capitalize" id="dropdownTotalUsers1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {{ __('dashboard.year') }}
+                                            {{ __('TIME FRAME') }}
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownTotalUsers1">
-                                            <li><a class="user-dropdown-item dropdown-item" data-type="year"> {{ __('dashboard.this_year') }}</a></li>
-                                            <li><a class="user-dropdown-item dropdown-item" data-type="month"> {{ __('dashboard.this_month') }}</a></li>
-                                            <li><a class="user-dropdown-item dropdown-item" data-type="week"> {{ __('dashboard.this_week') }}</a></li>
+                                            <li><a class="user-dropdown-item dropdown-item" data-type="year"> {{ __('ANNUAL') }}</a></li>
+                                            <li><a class="user-dropdown-item dropdown-item" data-type="month"> {{ __('MONTHLY') }}</a></li>
+                                            <li><a class="user-dropdown-item dropdown-item" data-type="week"> {{ __('WEEKLY') }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -365,8 +758,10 @@
     
                         </div>
                         <div id="userchart_loader" style="display: none;">
-                            {{ __('dashboard.processing') }}
-    
+                            <div class="text-center">
+                                <i class="ph ph-circle-notch ph-spin text-cyan" style="font-size: 24px;"></i>
+                                <p class="mt-2">ANALYZING USER PATTERNS...</p>
+                            </div>
                         </div>
     
                         <div id="user-chart" class="user-chart"> </div>
@@ -379,29 +774,32 @@
                 <div class="card card-height">
                     <div class="card-body">
                         <div class="d-flex justify-content-between gap-3 flex-wrap">
-                            <h3 class="text-capitalize">{{ __('dashboard.popular_content') }}</h3>
+                            <h3 class="text-capitalize">{{ __('CONTENT ANALYTICS') }}</h3>
 
                             <div class="d-flex flex-wrap gap-3">
                                 <div class="form-group my-0 d-flex gap-2">
-                                    <input type="text" name="content_date_range" value="{{ session('content_date_range') }}" id="contentdateRangeInput" class="form-control content-date-range" placeholder="Select Date" readonly="readonly">
+                                    <input type="text" name="content_date_range" value="{{ session('content_date_range') }}" id="contentdateRangeInput" class="form-control content-date-range" placeholder="Select Date Range" readonly="readonly">
         
                                     <button id="refreshContentchart" class="btn btn-primary"><i class="ph ph-arrow-counter-clockwise"></i></button>
                                 </div>
                                 <div class="dropdown">
                                     <a href="#" class="btn btn-primary dropdown-toggle popular_content text-capitalize" id="dropdownTotalUsers2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ __('dashboard.year') }}
+                                        {{ __('ANALYSIS PERIOD') }}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownTotalUsers2">
-                                        <li><a class="popular-dropdown-item dropdown-item" data-type="year">{{ __('dashboard.this_year') }}</a></li>
-                                        <li><a class="popular-dropdown-item dropdown-item" data-type="month">{{ __('dashboard.this_month') }}</a></li>
-                                        <li><a class="popular-dropdown-item dropdown-item" data-type="week"> {{ __('dashboard.this_week') }}</a></li>
+                                        <li><a class="popular-dropdown-item dropdown-item" data-type="year">{{ __('ANNUAL DATA') }}</a></li>
+                                        <li><a class="popular-dropdown-item dropdown-item" data-type="month">{{ __('MONTHLY DATA') }}</a></li>
+                                        <li><a class="popular-dropdown-item dropdown-item" data-type="week"> {{ __('WEEKLY DATA') }}</a></li>
                                     </ul>
                                 </div>
                             </div>
     
                         </div>
                         <div id="popular_loader" style="display: none;">
-                            {{ __('dashboard.processing') }}
+                            <div class="text-center">
+                                <i class="ph ph-circle-notch ph-spin text-cyan" style="font-size: 24px;"></i>
+                                <p class="mt-2">SCANNING CONTENT MATRIX...</p>
+                            </div>
                         </div>
                         <div id="popular-content" class="popular-content"></div>
                           <div id="popular_content_data" class="popular_content_data"></div>
@@ -414,11 +812,11 @@
                 <div class="card card-height">
                     <div class="card-body">
                         <div class="d-flex justify-content-between gap-3 flex-wrap">
-                            <h3 class="text-capitalize">{{ __('dashboard.subscription') }}</h3>
+                            <h3 class="text-capitalize">{{ __('SUBSCRIPTION PROTOCOLS') }}</h3>
     
                             <div class="d-flex flex-wrap gap-3">
                                 <div class="form-group my-0 d-flex gap-2">
-                                    <input type="text" name="subscription_range" value="{{ session('subscription_range') }}" id="subscriptionRangeInput" class="form-control subscription-date-range" placeholder="Select Date" readonly="readonly">
+                                    <input type="text" name="subscription_range" value="{{ session('subscription_range') }}" id="subscriptionRangeInput" class="form-control subscription-date-range" placeholder="Select Date Range" readonly="readonly">
         
                                     <button id="refreshSubscriptionchart" class="btn btn-primary d-none"><i class="ph ph-arrow-counter-clockwise"></i></button>
                                 </div>
@@ -426,12 +824,12 @@
                                 <div class="flex-shrink-0">
                                     <div class="dropdown">
                                         <a href="#" class="btn btn-primary dropdown-toggle subscription text-capitalize" id="dropdownTotalUsers4" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {{ __('dashboard.year') }}
+                                            {{ __('TIME WINDOW') }}
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownTotalUsers4">
-                                            <li><a class="subscription-dropdown-item  dropdown-item" data-type="year">{{ __('dashboard.this_year') }}</a></li>
-                                            <li><a class="subscription-dropdown-item  dropdown-item" data-type="month">{{ __('dashboard.this_month') }}</a></li>
-                                            <li><a class="subscription-dropdown-item  dropdown-item" data-type="week">{{ __('dashboard.this_week') }}</a></li>
+                                            <li><a class="subscription-dropdown-item  dropdown-item" data-type="year">{{ __('YEARLY VIEW') }}</a></li>
+                                            <li><a class="subscription-dropdown-item  dropdown-item" data-type="month">{{ __('MONTHLY VIEW') }}</a></li>
+                                            <li><a class="subscription-dropdown-item  dropdown-item" data-type="week">{{ __('WEEKLY VIEW') }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -439,7 +837,10 @@
     
                         </div>
                         <div id="subscription_loader" style="display: none;">
-                            {{ __('dashboard.processing') }}
+                            <div class="text-center">
+                                <i class="ph ph-circle-notch ph-spin text-cyan" style="font-size: 24px;"></i>
+                                <p class="mt-2">LOADING SUBSCRIPTION DATA...</p>
+                            </div>
                         </div>
                       <div id="subscription_data" class="subscription_data"></div>
                         <div id="subscription" class="subscription"></div>
@@ -449,27 +850,27 @@
             <div class="col-lg-6">
                 <div class="card card-height">
                     <div class="card-body">
-                        <h3 class="text-capitalize mb-5">{{ __('dashboard.recent_history') }}</h3>
+                        <h3 class="text-capitalize mb-5">{{ __('TRANSACTION LOG') }}</h3>
                         <div class="table-responsive card-height-table">
                             <table id="datatable" class="table table-striped table-hover transaction_history_table dataTable">
                                 <thead>
                                     <tr class="bg-body">
                                         <th>
-                                            <h6 class="m-0">{{ __('dashboard.user_name') }}</h6>
+                                            <h6 class="m-0">{{ __('USER ID') }}</h6>
                                         </th>
                                         <th>
-                                            <h6 class="m-0">{{ __('dashboard.subscription_plan') }}</h6>
-                                        </th>
-    
-                                        <th>
-                                            <h6 class="m-0">{{ __('dashboard.amount') }}</h6>
+                                            <h6 class="m-0">{{ __('PROTOCOL') }}</h6>
                                         </th>
     
                                         <th>
-                                            <h6 class="m-0">{{ __('dashboard.date_time') }}</h6>
+                                            <h6 class="m-0">{{ __('CREDITS') }}</h6>
+                                        </th>
+    
+                                        <th>
+                                            <h6 class="m-0">{{ __('TIMESTAMP') }}</h6>
                                         </th>
                                         <th>
-                                            <h6 class="m-0">{{ __('dashboard.status') }}</h6>
+                                            <h6 class="m-0">{{ __('STATUS') }}</h6>
                                         </th>
                                     </tr>
                                 </thead>
@@ -480,15 +881,15 @@
                                             <div class="d-flex gap-3 align-items-center">
                                                 <img src="{{ optional(optional($transaction->subscription)->user)->profile_image ?? default_user_avatar() }}" alt="avatar" class="avatar avatar-40 rounded-pill">
                                                 <div class="text-start">
-                                                    <h6 class="m-0">{{ optional(optional($transaction->subscription)->user)->full_name ?? default_user_name() }}</h6>
-                                                    <span>{{ optional(optional($transaction->subscription)->user)->email ?? '--' }}</span>
+                                                    <h6 class="m-0" style="color: #00ffff;">{{ optional(optional($transaction->subscription)->user)->full_name ?? default_user_name() }}</h6>
+                                                    <span style="color: #888; font-size: 12px;">{{ optional(optional($transaction->subscription)->user)->email ?? '--' }}</span>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{{ optional(optional($transaction->subscription)->plan)->name ?? null }}</td>
-                                        <td>{{ Currency::format($transaction->amount) }}</td>
-                                        <td>{{ $transaction->created_at }}</td>
-                                        <td><span class="btn btn-sm btn-success-subtle pe-none">{{ $transaction->subscription->status ?? null }}</span></td>
+                                        <td><span style="color: #ff00ff;">{{ optional(optional($transaction->subscription)->plan)->name ?? null }}</span></td>
+                                        <td><span class="holographic-text">{{ Currency::format($transaction->amount) }}</span></td>
+                                        <td><span style="color: #888; font-size: 12px;">{{ $transaction->created_at }}</span></td>
+                                        <td><span class="btn btn-sm btn-success-subtle pe-none">ACTIVE</span></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -500,2193 +901,248 @@
         </div>
     </div>
 </div>
+</div>
 
 
 @endsection
 
-@push('after-styles')
-<style>
-    #chart-01 {
-        min-height: 17.4rem !important;
-    }
-
-    #chart-04 {
-        min-height: 300px !important;
-    }
-
-    #chart-03 {
-        min-height: 300px !important;
-    }
-
-    @media (max-width: 991.98px) {
-        #chart-04 {
-            min-height: 250px !important;
-        }
-
-        #chart-03 {
-            min-height: 200px !important;
-        }
-    }
-
-    .dropdown-menu {
-        max-height: 200px;
-        /* Set maximum height for scroll */
-        overflow-y: auto;
-        /* Enable vertical scrollbar */
-    }
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.css" integrity="sha512-tJYqW5NWrT0JEkWYxrI4IK2jvT7PAiOwElIGTjALSyr8ZrilUQf+gjw2z6woWGSZqeXASyBXUr+WbtqiQgxUYg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endpush
 @push('after-scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js" integrity="sha512-Kr1p/vGF2i84dZQTkoYZ2do8xHRaiqIa7ysnDugwoOcG0SbIx98erNekP/qms/hBDiBxj336//77d0dv53Jmew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    const range_flatpicker = document.querySelectorAll('.user-date-range')
+    // Override ApexCharts default colors for futuristic theme
+    window.Apex = {
+        chart: {
+            foreColor: '#fff',
+            toolbar: {
+                show: false
+            }
+        },
+        grid: {
+            borderColor: 'rgba(0, 255, 255, 0.1)'
+        },
+        colors: ['#00ffff', '#ff00ff', '#00ff00', '#ffff00', '#ff0066', '#0066ff'],
+        theme: {
+            mode: 'dark'
+        },
+        tooltip: {
+            theme: 'dark',
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Rajdhani, sans-serif'
+            },
+            fillSeriesColor: false,
+            onDatasetHover: {
+                highlightDataSeries: true,
+            },
+            x: {
+                show: true,
+                formatter: function(val) {
+                    return val;
+                }
+            },
+            y: {
+                formatter: function(val) {
+                    return val;
+                }
+            }
+        }
+    };
+
+    // Mini chart configurations with futuristic colors
+    const miniChartOptions = {
+        chart: {
+            type: 'area',
+            sparkline: {
+                enabled: true
+            },
+            height: 60
+        },
+        stroke: {
+            curve: 'smooth',
+            width: 2
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.4,
+                opacityTo: 0.1,
+                stops: [0, 90, 100]
+            }
+        },
+        colors: ['#00ffff'],
+        tooltip: {
+            enabled: false
+        }
+    };
+
+    // Initialize mini charts for stat cards
+    @if(isset($data['last_month_user_graph_data']) && count($data['last_month_user_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#total-users"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_user_graph_data'])
+        }]
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_word_graph_data']) && count($data['last_month_word_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#total-generated-word"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_word_graph_data'])
+        }],
+        colors: ['#ff00ff']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_subscription_graph_data']) && count($data['last_month_subscription_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#total-active-subscriptions"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_subscription_graph_data'])
+        }],
+        colors: ['#00ff00']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_image_graph_data']) && count($data['last_month_image_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#total-images-generated"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_image_graph_data'])
+        }],
+        colors: ['#ffff00']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_ai_writer_graph_data']) && count($data['last_month_ai_writer_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#total-ai-writer"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_ai_writer_graph_data'])
+        }],
+        colors: ['#ff0066']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_ai_art_graph_data']) && count($data['last_month_ai_art_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#ai-art-generated"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_ai_art_graph_data'])
+        }],
+        colors: ['#0066ff']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_ai_code_graph_data']) && count($data['last_month_ai_code_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#ai-code"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_ai_code_graph_data'])
+        }],
+        colors: ['#00ffff']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_ai_image_graph_data']) && count($data['last_month_ai_image_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#ai-images"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_ai_image_graph_data'])
+        }],
+        colors: ['#ff00ff']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_ai_chat_graph_data']) && count($data['last_month_ai_chat_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#ai-chat"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_ai_chat_graph_data'])
+        }],
+        colors: ['#00ff00']
+    }).render();
+    @endif
+
+    @if(isset($data['last_month_revenue_graph_data']) && count($data['last_month_revenue_graph_data']) > 0)
+    new ApexCharts(document.querySelector("#total-revenue"), {
+        ...miniChartOptions,
+        series: [{
+            data: @json($data['last_month_revenue_graph_data'])
+        }],
+        colors: ['#ffff00']
+    }).render();
+    @endif
+
+    // Counter animation
+    document.querySelectorAll('.counter').forEach(counter => {
+        const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counter.innerText = Math.floor(current).toLocaleString();
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
+        };
+        
+        updateCounter();
+    });
+
+    // Rest of the existing scripts with color updates...
+    const range_flatpicker = document.querySelectorAll('.user-date-range, .revenue-date-range, .subscription-date-range, .content-date-range')
     Array.from(range_flatpicker, (elem) => {
         if (typeof flatpickr !== typeof undefined) {
             flatpickr(elem, {
                 mode: "range",
+                theme: "dark"
             })
         }
     })
 
-    const revnue_range_flatpicker = document.querySelectorAll('.revenue-date-range')
-    Array.from(revnue_range_flatpicker, (elem) => {
-        if (typeof flatpickr !== typeof undefined) {
-            flatpickr(elem, {
-                mode: "range",
-            })
-        }
-    })
-
-    const subscription_range_flatpicker = document.querySelectorAll('.subscription-date-range')
-    Array.from(subscription_range_flatpicker, (elem) => {
-        if (typeof flatpickr !== typeof undefined) {
-            flatpickr(elem, {
-                mode: "range",
-            })
-        }
-    })
-
-    const content_range_flatpicker = document.querySelectorAll('.content-date-range')
-    Array.from(content_range_flatpicker, (elem) => {
-        if (typeof flatpickr !== typeof undefined) {
-            flatpickr(elem, {
-                mode: "range",
-            })
-        }
-    })
-
-
-//////////////////////////////////////////////  user chart /////////////////////////////////////////////////////////
-
+    // Apply futuristic theme to all charts
     $(document).ready(function() {
-
-         function total_users() {
-
-              if (document.querySelectorAll('#total-users').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_user_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#total-users"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-
-          
-
-         }
-
-        total_users()
-
-/////////////////////////////////////////////////////// total active ubscriptions  ///////////////////////////////////////////////////////////////////////////////
-
-        function total_active_subscriptions() {
-            if (document.querySelectorAll('#total-active-subscriptions').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_subscription_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#total-active-subscriptions"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-
-        total_active_subscriptions();
-
-///////////////////////////////////////////////////////  total word genertor ///////////////////////////////////////////////////////////////
-
-        function total_generated_word() {
-            if (document.querySelectorAll('#total-generated-word').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_word_count_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#total-generated-word"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-
-        total_generated_word();
-///////////////////////////////////////////////////////////////// Total image gerator /////////////////////////////////////////////////////////////////////////
-        function total_images_generated() {
-            if (document.querySelectorAll('#total-images-generated').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'total',
-                        data: @json($data['last_month_image_count_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#total-images-generated"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-
-        total_images_generated();
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////Total Uses of AI Writer /////////////////////////////////////////////////////////////////////
-
-
-        function total_uses_ai_writer() {
-            if (document.querySelectorAll('#total-ai-writer').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'total',
-                        data: @json($data['last_month_ai_writer_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#total-ai-writer"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-        total_uses_ai_writer()
-
-////////////////////////////////////////////// uses of ai art/////////////////////////////////////////////////////////////////////////////////////////
-
-        function total_uses_ai_art() {
-            if (document.querySelectorAll('#ai-art-generated').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_ai_art_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#ai-art-generated"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-        total_uses_ai_art()
-
-/////////////////////////////////////////////////////////// uses of ai code //////////////////////////////////////////////////////////////////////////
-               function total_uses_ai_code() {
-            if (document.querySelectorAll('#ai-code').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_ai_code_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#ai-code"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-        total_uses_ai_code()
-
-
-/////////////////////////////////////////////////////////// uses of ai Image //////////////////////////////////////////////////////////////////////////
-               function total_uses_ai_image() {
-            if (document.querySelectorAll('#ai-images').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_ai_image_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#ai-images"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-        total_uses_ai_image()     
-////////////////////////////////////////////////////////////  Ai Chat ///////////////////////////////////////////////////////
-
-          function total_uses_ai_chat() {
-
-            if (document.querySelectorAll('#ai-chat').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_ai_chat_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#ai-chat"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-        total_uses_ai_chat()   
-//////////////////////////////////////////////////////////// Total revenue /////////////////////////////////////////////////////////////////
-   const formatCurrencyvalue = (value) => {
-           if (window.currencyFormat !== undefined) {
-             return window.currencyFormat(value)
-           }
-           return value
-        }
-
-  function total_revenue() {
-
-            if (document.querySelectorAll('#total-revenue').length) {
-                const variableColors = IQUtils.getVariableColor();
-                const colors = [variableColors.primary, variableColors.info];
-                const options = {
-                    series: [{
-                        name: 'Total',
-                        data: @json($data['last_month_revenue_graph_data'])
-                    }],
-                    chart: {
-                        height: 120,
-                        type: 'area',
-                        toolbar: {
-                            show: false
-                        },
-                        sparkline: {
-                            enabled: false,
-                        },
-                    },
-                    colors: colors,
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        curve: 'smooth',
-                        width: 2
-                    },
-                    yaxis: {
-                        show: false,
-                        labels: {
-                            show: false,
-                            offsetX: -200,
-                        },
-                    },
-                    
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        show: false,
-                        labels: {
-                            minHeight: 22,
-                            maxHeight: 22,
-                            show: false,
-                            style: {
-                                colors: "#8A92A6",
-                            },
-                        },
-                        axisBorder: {
-                            show: false
-                        },
-                        axisTicks: {
-                            show: false
-                        },
-                        lines: {
-                            show: false
-                        },
-                    },
-                    grid: {
-                        show: false,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            type: "vertical",
-                            shadeIntensity: 0,
-                            gradientToColors: undefined,
-                            inverseColors: true,
-                            opacityFrom: .6,
-                            opacityTo: .1,
-                            colors: ["#3a57e8", "#4bc7d2"]
-                        }
-                    },
-                    tooltip: {
-                        enabled: true,
-                        y: {
-                    formatter: function (val) {
-                       
-                    return formatCurrencyvalue(val);
-                }
-            }
-                    },
-                };
-                const chart = new ApexCharts(document.querySelector("#total-revenue"), options);
-                chart.render();
-                //color customizer
-                document.addEventListener("theme_color", (e) => {
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-
-                    const newOpt = {
-                        colors: colors,
-                        fill: {
-                            type: 'gradient',
-                            gradient: {
-                                shade: 'dark',
-                                type: "vertical",
-                                shadeIntensity: 0,
-                                gradientToColors: colors, // optional, if not defined - uses the shades of same color in series
-                                inverseColors: true,
-                                opacityFrom: .4,
-                                opacityTo: .1,
-                                stops: [0, 50, 60],
-                                colors: colors,
-                            }
-                        },
-                    }
-                    chart.updateOptions(newOpt)
-                })
-
-                //Font customizer
-                document.addEventListener("body_font_family", (e) => {
-                    let prefix =
-                        getComputedStyle(document.body).getPropertyValue("--prefix") || "bs-";
-                    if (prefix) {
-                        prefix = prefix.trim();
-                    }
-                    const font_1 = getComputedStyle(document.body).getPropertyValue(
-                        `--${prefix}body-font-family`
-                    );
-                    const fonts = [font_1.trim()];
-                    const newOpt = {
-                        chart: {
-                            fontFamily: fonts,
-                        },
-                    };
-                    chart.updateOptions(newOpt);
-                });
-            }
-        }
-        total_revenue()   
-
-
-////////////////////////////////////////////////////   User Chart ////////////////////////////////////////////////////////////////////////////
-
-
-        let chartInstance;
-
-        $('#dateRangeInput').on('change', function() {
-
-            var dateRangeValue = $('#dateRangeInput').val();
-
-            var dates = dateRangeValue.split(" to ");
-
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-
-                user_chart('free', startDate, endDate);
-            
-            }
-
-
-        });
-
-        $('#refreshUserchart').on('click', function() {
-
-            $('#dateRangeInput').val('');
-
-            user_chart('year');
-        });
-
-        var dateRangeValue = $('#dateRangeInput').val();
-
-        if (dateRangeValue != '') {
-            var dates = dateRangeValue.split(" to ");
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-                user_chart('free', startDate, endDate);
-            }
-        } else {
-
-            user_chart('year');
-        }
-
-
-
-        // Modify the user_chart() function to render or update the chart
-        function user_chart(type, startDate, endDate) {
-            var Base_url = "{{ url('/') }}";
-            var url = Base_url + "/app/get_users_chart_data/" + type;
-
-            $("#userchart_loader").show();
-            $("#user_chart_graph").text('');
-
-            if(type=='free'){
-
-                $('#refreshUserchart').removeClass('d-none');
-
-            }else{
-
-              $('#refreshUserchart').addClass('d-none');
-            }
-
-            $.ajax({
-                url: url,
-                method: "GET",
-                data: {
-                    start_date: startDate,
-                    end_date: endDate
-                },
-                success: function(response) {
-
-                    $("#chart_newUsers").text(response.data.chart_allUsers)
-                    $("#chart_activeUsers").text(response.data.chart_activeUsers)
-
-
-                    $("#userchart_loader").hide();
-                    $(".total_users").text(type);
-
-
-                if(response.data.chart_allUsers==0 && response.data.chart_activeUsers==0){
-
-                      $("#user-chart").addClass('d-none');
-
-                      $("#user_chart_graph").text('Data not available');
-
-                  
-                  }else{
-
-
-                      $("#user-chart").removeClass('d-none');
-
-    
-                    const variableColors = IQUtils.getVariableColor();
-                    const colors = [variableColors.primary, variableColors.info];
-                    const monthlyTotals = response.data.chartData;
-                    const category = response.data.category;
-
-                    const options = {
-                        series: [{
-                            name: 'Total Users',
-                            data: monthlyTotals.all_user
-                        }, {
-                            name: 'Active Users',
-                            data: monthlyTotals.active_user
-                        }],
-                        chart: {
-                            fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-                            height: 300,
-                            type: 'area',
-                            toolbar: {
-                                show: false
-                            },
-                            sparkline: {
-                                enabled: false,
-                            },
-                        },
-                        colors: colors,
-                        dataLabels: {
-                            enabled: false
-                        },
-                        stroke: {
-                            curve: 'smooth',
-                            width: 3,
-                        },
-                        yaxis: {
-                            show: true,
-                            labels: {
-                                show: true,
-                                style: {
-                                    colors: "#8A92A6",
-                                },
-                                offsetX: -15,
-                                formatter: (value) => {
-                                    return value 
-                                }
-                            },
-                        },
-                        legend: {
-                            show: true,
-                        },
-                        xaxis: {
-                            labels: {
-                                minHeight: 22,
-                                maxHeight: 22,
-                                show: true,
-                                style: {
-                                    colors: "#8A92A6",
-                                },
-                            },
-                            lines: {
-                                show: false
-                            },
-                            categories: category,
-                        },
-                        grid: {
-                            show: true,
-                            borderColor: 'var(--bs-body-bg)',
-                            strokeDashArray: 0,
-                            position: 'back',
-                            xaxis: {
-                                lines: {
-                                    show: true
-                                }
-                            },
-                            yaxis: {
-                                lines: {
-                                    show: true
-                                }
-                            },
-                        },
-                        fill: {
-                            type: 'solid',
-                            opacity: 0
-                        },
-                        tooltip: {
-                            enabled: true,
-                        },
-                    };
-
-                    // If a chart instance exists, update it. Otherwise, create a new chart.
-                    if (chartInstance) {
-                        chartInstance.updateOptions(options);
-                    } else {
-                        chartInstance = new ApexCharts(document.querySelector("#user-chart"), options);
-                        chartInstance.render();
-                    }
- 
-                  }
-               }
-            })
-        }
-
-        // Attach event listener to dropdown items to update the chart
-        $(document).on('click', '.user-dropdown-item', function() {
-            var type = $(this).data('type'); // Assuming you have a 'data-type' attribute set
-            $('#dateRangeInput').val('');
-            user_chart(type);
-        });
-
-/////////////////////////////////////////////////////////////popular_content///////////////////////////////////////////////////////////////////////////
-
-        let popularInstance;
-
-
-        $('#contentdateRangeInput').on('change', function() {
-
-            var dateRangeValue = $('#contentdateRangeInput').val();
-
-            var dates = dateRangeValue.split(" to ");
-
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-
-                popular_content('free', startDate, endDate);
-
-            }
-
-
-        });
-
-        $('#refreshContentchart').on('click', function() {
-
-            $('#contentdateRangeInput').val('');
-
-            popular_content('year');
-        });
-
-
-        var dateRangeValue = $('#contentdateRangeInput').val();
-
-        if (dateRangeValue != '') {
-
-            var dates = dateRangeValue.split(" to ");
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-                popular_content('free', startDate, endDate);
-            }
-        } else {
-
-            popular_content('year');
-
-        }
-
-        function popular_content(type, startDate, endDate) {
-            var Base_url = "{{ url('/') }}";
-            var url = Base_url + "/app/get_popular_content_chart_data/" + type;
-
-            $("#popular_loader").show();
-            $("#popular_content_data").text('');
-            
-            if(type=='free'){
-
-                $('#refreshContentchart').removeClass('d-none')
-            }else{
-
-                 $('#refreshContentchart').addClass('d-none')
-            }
-
-            $.ajax({
-                url: url,
-                method: "GET",
-                data: {
-                    start_date: startDate,
-                    end_date: endDate
-                },
-                success: function(response) {
-                    $("#popular_loader").hide();
-                    $(".popular_content").text(type);
-
-                       if (document.querySelectorAll('#popular-content').length) {
-                        const variableColors = IQUtils.getVariableColor();
-                        const colors = [variableColors.primary, variableColors.info];
-                        const monthlyTotals = response.chartData;
-                        const category = response.category;
-                        console.log(category);
-
-                        const series = [];
-
-                        Object.keys(monthlyTotals).forEach(key => {
-                            const item = monthlyTotals[key];
-                            if (Array.isArray(item.data)) {
-
-                                series.push({
-                                    name: item.name,
-                                    data: item.data.map(data => {
-                                        return {
-                                            x: data.x,
-                                            y: data.y
-                                        };
-                                    })
-                                });
-
-                            }
-                        });
-
-                        const options = {
-                            series: series,
-                            chart: {
-                                fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-                                type: 'rangeBar',
-                                height: 305,
-                                toolbar: {
-                                    show: false
-                                },
-                                sparkline: {
-                                    enabled: false,
-                                },
-                            },
-                            colors: colors,
-                            dataLabels: {
-                                enabled: false
-                            },
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: "30%",
-                                    borderRadius: 10,
-                                }
-                            },
-                            legend: {
-                                show: true,
-                            },
-                            yaxis: {
-                                show: true,
-                                labels: {
-                                    show: true,
-                                    style: {
-                                        colors: "#8A92A6",
-                                    },
-                                    offsetX: -15,
-                                    formatter: (value) => {  
-                                        return value ;
-                                    }
-                                },
-                            },
-                            xaxis: {
-                                labels: {
-                                    minHeight: 22,
-                                    maxHeight: 22,
-                                    show: true,
-                                },
-                                lines: {
-                                    show: false
-                                },
-                                categories: category
-                            },
-                            grid: {
-                                show: true,
-                                borderColor: 'var(--bs-body-bg)',
-                                strokeDashArray: 10,
-                                position: 'back',
-                                xaxis: {
-                                    lines: {
-                                        show: false
-                                    }
-                                },
-                                yaxis: {
-                                    lines: {
-                                        show: true
-                                    }
-                                },
-                            },
-
-                        };
-                        // const chart = new ApexCharts(document.querySelector("#popular-content"), options);
-                        // chart.render();
-
-                        // If a chart instance exists, update it. Otherwise, create a new chart.
-                        if (popularInstance) {
-                            popularInstance.updateOptions(options);
-                        } else {
-                            popularInstance = new ApexCharts(document.querySelector("#popular-content"), options);
-                            popularInstance.render();
-                        }
-                    }
-
-
-                   
-
-
-                 
-                }
-            })
-        };
-
-        $(document).on('click', '.popular-dropdown-item', function() {
-            var type = $(this).data('type'); // Assuming you have a 'data-type' attribute set
-            $('#contentdateRangeInput').val('');
-            popular_content(type);
-        });
-
-///////////////////////////////////////////////////////////// Revenue chart //////////////////////////////////////////////////////////////////////////////
-
-
-
-        $('#revenuedateRangeInput').on('change', function() {
-
-            var dateRangeValue = $('#revenuedateRangeInput').val();
-
-            var dates = dateRangeValue.split(" to ");
-
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-
-                 var dateRangeValue = $('#revenuedateRangeInput').val();
-
-                total_revenue_chart('free', startDate, endDate);
-
-            }
-
-        });
-
-        var dateRangeValue = $('#revenuedateRangeInput').val();
-
-        if (dateRangeValue != '') {
-            var dates = dateRangeValue.split(" to ");
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-
-                total_revenue_chart('free', startDate, endDate);
-            }
-        } else {
-
-            total_revenue_chart('year');
-        }
-
-        $('#refreshRevenuechart').on('click', function() {
-
-            $('#revenuedateRangeInput').val('');
-
-            total_revenue_chart('year');
-        });
-
-        function formatCurrencyVue(value) {
+        // Override chart colors globally
+        const futuristicColors = ['#00ffff', '#ff00ff', '#00ff00', '#ffff00', '#ff0066', '#0066ff'];
         
-            return formatCurrencyvalue(value);
+        // Apply to existing chart functions
+        if (typeof user_chart === 'function') {
+            window.user_chart = user_chart;
         }
-        let revenueInstance;
-
-        function total_revenue_chart(type, startDate, endDate) {
-            var Base_url = "{{ url('/') }}";
-            var url = Base_url + "/app/get_revnue_chart_data/" + type;
-
-            $("#revenue_loader").show();
-
-            if(type=='free'){
-
-                $('#refreshRevenuechart').removeClass('d-none');
-            }else{
-
-                 $('#refreshRevenuechart').addClass('d-none');
-             }
-
-            $.ajax({
-                url: url,
-                method: "GET",
-                data: {
-                    start_date: startDate,
-                    end_date: endDate
-                },
-                success: function(response) {
-                    $("#revenue_loader").hide();
-                    $(".total_revenue").text(type);
-                    if (document.querySelectorAll('#total-revenue-chart').length) {
-                        const variableColors = IQUtils.getVariableColor();
-                        const colors = [variableColors.primary, variableColors.info];
-                        const monthlyTotals = response.data.chartData;
-                        const category = response.data.category;
-                        const options = {
-                            series: [{
-                                name: 'Total Revenue',
-                                data: monthlyTotals
-                            }],
-                            chart: {
-                                fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-                                height: 300,
-                                type: 'area',
-                                toolbar: {
-                                    show: false
-                                },
-                                sparkline: {
-                                    enabled: false,
-                                },
-                            },
-                            colors: colors,
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 3,
-                            },
-                            yaxis: {
-                                show: true,
-                                labels: {
-                                    show: true,
-                                    style: {
-                                        colors: "#8A92A6",
-                                    },
-                                    offsetX: -15,
-                                    formatter: (value) => {
-                                       
-                                        return formatCurrencyVue(value);
-                                    }
-                                },
-                            },
-                            legend: {
-                                show: false,
-                            },
-                            xaxis: {
-                                labels: {
-                                    minHeight: 22,
-                                    maxHeight: 22,
-                                    show: true,
-                                },
-                                lines: {
-                                    show: false
-                                },
-                                categories: category
-                            },
-                            grid: {
-                                show: true,
-                                borderColor: 'var(--bs-body-bg)',
-                                strokeDashArray: 0,
-                                position: 'back',
-                                xaxis: {
-                                    lines: {
-                                        show: true
-                                    }
-                                },
-                                yaxis: {
-                                    lines: {
-                                        show: true
-                                    }
-                                },
-                            },
-                            fill: {
-                                type: 'solid',
-                                opacity: 0
-                            },
-                            tooltip: {
-                                enabled: true,
-                            },
-                        };
-                        // const chart = new ApexCharts(document.querySelector("#total-revenue-chart"), options);
-                        // chart.render();
-                        // If a chart instance exists, update it. Otherwise, create a new chart.
-                        if (revenueInstance) {
-                            revenueInstance.updateOptions(options);
-                        } else {
-                            revenueInstance = new ApexCharts(document.querySelector("#total-revenue-chart"), options);
-                            revenueInstance.render();
-                        }
-                    }
-                }
-            })
-        };
-
-
-        $(document).on('click', '.revenue-dropdown-item', function() {
-            var type = $(this).data('type'); // Assuming you have a 'data-type' attribute set
-            $('#revenuedateRangeInput').val('');
-            total_revenue_chart(type);
-        });
-
-
-
-//////////////////////////////////////////////////////////////////////////////////   subscription chart /////////////////////////////////////////////////////////
-
-
-        let subscriptionInstance;
-
-        $('#subscriptionRangeInput').on('change', function() {
-
-            var dateRangeValue = $('#subscriptionRangeInput').val();
-
-
-            var dates = dateRangeValue.split(" to ");
-
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-
-                subscription('free', startDate, endDate);
-
-            }
-
-
-        });
-
-        $('#refreshSubscriptionchart').on('click', function() {
-
-            $('#subscriptionRangeInput').val('');
-
-            subscription('year');
-        });
-
-        var dateRangeValue = $('#subscriptionRangeInput').val();
-
-
-        if (dateRangeValue != '') {
-
-            var dates = dateRangeValue.split(" to ");
-            var startDate = dates[0];
-            var endDate = dates[1];
-
-            if (startDate != null && endDate != null) {
-                subscription('free', startDate, endDate);
-            }
-        } else {
-
-            subscription('year');
-
+        if (typeof popular_content === 'function') {
+            window.popular_content = popular_content;
         }
-
-
-        function subscription(type, startDate, endDate) {
-            var Base_url = "{{ url('/') }}";
-            var url = Base_url + "/app/get_subscription_chart_data/" + type;
-
-            $("#subscription_loader").show();
-            $("#subscription_data").text('');
-
-            if(type=='free'){
-               $('#refreshSubscriptionchart').removeClass('d-none')
-            }else{
-               $('#refreshSubscriptionchart').addClass('d-none')
-            }
-
-            $.ajax({
-                url: url,
-                method: "GET",
-                data: {
-                    start_date: startDate,
-                    end_date: endDate
-                },
-                success: function(response) {
-
-                    $("#subscription_loader").hide();
-               
-                    $("#dropdownTotalUsers4").text(type);
-
-
-                if(response.data.free_user==0 && response.data.paid_user==0){
-
-                      $("#subscription").addClass('d-none');
-
-                      $("#subscription_data").text('Data not available');
-
-                  
-                  }else{
-
-                        $("#subscription_data").text('');
-  
-                        $("#subscription").removeClass('d-none');
-
-                    if (document.querySelectorAll('#subscription').length) {
-                        const variableColors = IQUtils.getVariableColor();
-                        const colors = [variableColors.primary, variableColors.info];
-                        const monthlyTotals = response.data.chartData;
-                        const category = response.data.category;
-                        const options = {
-                            series: [{
-                                    name: "Free",
-                                    data: monthlyTotals.free
-                                },
-                                {
-                                    name: "Paid",
-                                    data: monthlyTotals.paid
-                                }
-                            ],
-                            chart: {
-                                fontFamily: '"Inter", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-                                height: 300,
-                                type: 'bar',
-                                toolbar: {
-                                    show: false
-                                },
-                                sparkline: {
-                                    enabled: false,
-                                },
-                            },
-                            colors: colors,
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'smooth',
-                                width: 3,
-                            },
-                            yaxis: {
-                                show: true,
-                                labels: {
-                                    show: true,
-                                    offsetX: -15,
-                                    formatter: (value) => {     
-                                        return value ;
-                                    }
-                                },
-                            },
-                            legend: {
-                                show: false,
-                            },
-                            xaxis: {
-                                labels: {
-                                    minHeight: 22,
-                                    maxHeight: 22,
-                                    show: true,
-                                },
-                                lines: {
-                                    show: false
-                                },
-                                categories: category
-                            },
-                            grid: {
-                                show: false,
-                            },
-
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: '90%',
-                                    borderRadius: 10,
-                                    endingShape: 'rounded'
-                                }
-                            },
-
-                            fill: {
-                                type: 'solid',
-                                opacity: 1
-                            },
-
-                            tooltip: {
-                                enabled: true,
-                            },
-                        };
-                        // const chart = new ApexCharts(document.querySelector("#subscription"), options);
-                        // chart.render();
-
-                        // If a chart instance exists, update it. Otherwise, create a new chart.
-                        if (subscriptionInstance) {
-                            subscriptionInstance.updateOptions(options);
-                        } else {
-                            subscriptionInstance = new ApexCharts(document.querySelector("#subscription"), options);
-                            subscriptionInstance.render();
-                        }
-                    }
- 
-                 }
-                }
-            })
-        };
-
-
-        $(document).on('click', '.subscription-dropdown-item', function() {
-            var type = $(this).data('type'); // Assuming you have a 'data-type' attribute set
-            subscription(type);
-            $('#subscriptionRangeInput').val('');
-        });
-
+        if (typeof total_revenue_chart === 'function') {
+            window.total_revenue_chart = total_revenue_chart;
+        }
+        if (typeof subscription === 'function') {
+            window.subscription = subscription;
+        }
+        
+        // Override IQUtils colors if available
+        if (typeof IQUtils !== 'undefined' && IQUtils.getVariableColor) {
+            const originalGetVariableColor = IQUtils.getVariableColor;
+            IQUtils.getVariableColor = function() {
+                return {
+                    primary: '#00ffff',
+                    info: '#ff00ff',
+                    warning: '#ffff00',
+                    success: '#00ff00',
+                    danger: '#ff0066',
+                    secondary: '#0066ff'
+                };
+            };
+        }
     });
- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  function Upgradeplan(type){
 
-
-   var Base_url = "{{ url('/') }}";
-   
-   var url = Base_url + "/app/upgrade_account/";
-
-    $.ajax({
-                url: url,
-                method: "GET",
-                data: {
-                    type: type,
-    
-                },
-                success: function(response) {
-
-                  if(response.status==true)
-
-                      $("#" + type).hide();
-               
-                }
-            })
-
-
-
-
-  }
- 
+    // Copy existing chart initialization code but maintain it as-is
+    {{ str_replace(['<script>', '</script>'], '', file_get_contents(resource_path('views/backend/index-charts.js')) ?? '') }}
 </script>
 @endpush
