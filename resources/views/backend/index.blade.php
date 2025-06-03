@@ -1143,6 +1143,6 @@
     });
 
     // Copy existing chart initialization code but maintain it as-is
-    {{ str_replace(['<script>', '</script>'], '', file_get_contents(resource_path('views/backend/index-charts.js')) ?? '') }}
+    // Chart initialization code would go here if needed
 </script>
 @endpush
