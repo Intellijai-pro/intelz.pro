@@ -386,6 +386,511 @@
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
     }
+
+    /* Floating Particles */
+    .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: radial-gradient(circle, #00ffff 0%, transparent 70%);
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ffff;
+        animation: float 20s infinite linear;
+        opacity: 0;
+    }
+
+    .particle:nth-child(odd) {
+        background: radial-gradient(circle, #ff00ff 0%, transparent 70%);
+        box-shadow: 0 0 10px #ff00ff;
+    }
+
+    @keyframes float {
+        0% {
+            opacity: 0;
+            transform: translateY(100vh) scale(0);
+        }
+        10% {
+            opacity: 1;
+            transform: translateY(90vh) scale(1);
+        }
+        90% {
+            opacity: 1;
+            transform: translateY(10vh) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(0) scale(0);
+        }
+    }
+
+    .particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 15s; }
+    .particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 20s; }
+    .particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 18s; }
+    .particle:nth-child(4) { left: 20%; animation-delay: 6s; animation-duration: 22s; }
+    .particle:nth-child(5) { left: 25%; animation-delay: 8s; animation-duration: 16s; }
+    .particle:nth-child(6) { left: 30%; animation-delay: 10s; animation-duration: 19s; }
+    .particle:nth-child(7) { left: 35%; animation-delay: 12s; animation-duration: 21s; }
+    .particle:nth-child(8) { left: 40%; animation-delay: 14s; animation-duration: 17s; }
+    .particle:nth-child(9) { left: 45%; animation-delay: 16s; animation-duration: 20s; }
+    .particle:nth-child(10) { left: 50%; animation-delay: 18s; animation-duration: 15s; }
+    .particle:nth-child(11) { left: 55%; animation-delay: 1s; animation-duration: 18s; }
+    .particle:nth-child(12) { left: 60%; animation-delay: 3s; animation-duration: 22s; }
+    .particle:nth-child(13) { left: 65%; animation-delay: 5s; animation-duration: 16s; }
+    .particle:nth-child(14) { left: 70%; animation-delay: 7s; animation-duration: 19s; }
+    .particle:nth-child(15) { left: 75%; animation-delay: 9s; animation-duration: 21s; }
+    .particle:nth-child(16) { left: 80%; animation-delay: 11s; animation-duration: 17s; }
+    .particle:nth-child(17) { left: 85%; animation-delay: 13s; animation-duration: 20s; }
+    .particle:nth-child(18) { left: 90%; animation-delay: 15s; animation-duration: 15s; }
+    .particle:nth-child(19) { left: 95%; animation-delay: 17s; animation-duration: 18s; }
+    .particle:nth-child(20) { left: 100%; animation-delay: 19s; animation-duration: 22s; }
+
+    /* Circuit Pattern */
+    .circuit-pattern {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 0;
+        background-image: 
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 50px,
+                rgba(0, 255, 255, 0.1) 50px,
+                rgba(0, 255, 255, 0.1) 51px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                rgba(0, 255, 255, 0.1) 50px,
+                rgba(0, 255, 255, 0.1) 51px
+            );
+        animation: circuitMove 60s linear infinite;
+    }
+
+    @keyframes circuitMove {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
+    }
+
+    /* Holographic Overlay */
+    .holographic-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        background: 
+            repeating-linear-gradient(
+                180deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 255, 0.03) 2px,
+                rgba(0, 255, 255, 0.03) 4px
+            );
+        animation: holographicScan 8s linear infinite;
+    }
+
+    @keyframes holographicScan {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(4px); }
+    }
+
+    /* Enhanced Card Hover Effects */
+    .card {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform-style: preserve-3d;
+    }
+
+    .card:hover {
+        transform: translateY(-5px) rotateX(2deg) rotateY(-2deg);
+    }
+
+    /* Data Stream Effect */
+    .data-stream {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+        animation: dataFlow 2s linear infinite;
+        opacity: 0.6;
+    }
+
+    @keyframes dataFlow {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+
+    /* Neural Network Connections */
+    .neural-connection {
+        position: absolute;
+        width: 1px;
+        background: rgba(0, 255, 255, 0.3);
+        transform-origin: left center;
+        animation: neuralPulse 4s ease-in-out infinite;
+    }
+
+    /* HUD Frame */
+    .hud-frame {
+        position: fixed;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .hud-frame.top-left {
+        top: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        border-top: 2px solid rgba(0, 255, 255, 0.5);
+        border-left: 2px solid rgba(0, 255, 255, 0.5);
+    }
+
+    .hud-frame.top-right {
+        top: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-top: 2px solid rgba(255, 0, 255, 0.5);
+        border-right: 2px solid rgba(255, 0, 255, 0.5);
+    }
+
+    .hud-frame.bottom-left {
+        bottom: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        border-bottom: 2px solid rgba(255, 0, 255, 0.5);
+        border-left: 2px solid rgba(255, 0, 255, 0.5);
+    }
+
+    .hud-frame.bottom-right {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-bottom: 2px solid rgba(0, 255, 255, 0.5);
+        border-right: 2px solid rgba(0, 255, 255, 0.5);
+    }
+
+    /* Glitch Effect */
+    @keyframes glitch {
+        0%, 100% {
+            text-shadow: 
+                0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        14% {
+            text-shadow: 
+                0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        15% {
+            text-shadow: 
+                -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        49% {
+            text-shadow: 
+                -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        50% {
+            text-shadow: 
+                0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+        99% {
+            text-shadow: 
+                0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+        }
+    }
+
+    .glitch-text:hover {
+        animation: glitch 0.5s infinite;
+    }
+
+    /* Enhanced Stats Cards */
+    .card-height .counter {
+        position: relative;
+        display: inline-block;
+    }
+
+    .card-height .counter::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        animation: counterUnderline 3s ease-in-out infinite;
+    }
+
+    @keyframes counterUnderline {
+        0%, 100% { transform: scaleX(0); opacity: 0; }
+        50% { transform: scaleX(1); opacity: 1; }
+    }
+
+    /* Radar Sweep Effect */
+    .radar-sweep {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        opacity: 0.1;
+    }
+
+    .radar-sweep::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(0, 255, 255, 0.5) 30deg,
+            transparent 60deg
+        );
+        border-radius: 50%;
+        animation: radarRotate 4s linear infinite;
+    }
+
+    @keyframes radarRotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Interactive Button Enhancement */
+    .btn {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .btn::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+        z-index: -1;
+    }
+
+    .btn:active::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* Matrix Rain Effect (subtle) */
+    .matrix-rain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.02;
+        z-index: 0;
+        background-image: 
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                rgba(0, 255, 0, 0.1) 20px,
+                rgba(0, 255, 0, 0.1) 21px
+            );
+        animation: matrixFall 10s linear infinite;
+    }
+
+    @keyframes matrixFall {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+    }
+
+    /* System Status Display */
+    .system-status {
+        background: rgba(10, 10, 10, 0.8);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .system-status::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent);
+        animation: statusScan 3s linear infinite;
+    }
+
+    @keyframes statusScan {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .status-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .status-title {
+        font-family: 'Orbitron', monospace;
+        font-size: 24px;
+        font-weight: 900;
+        color: #00ffff;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    .status-indicators {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .indicator {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+    }
+
+    .indicator::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #444;
+        animation: indicatorPulse 2s ease-in-out infinite;
+    }
+
+    .indicator.active::before {
+        background: #00ff00;
+        box-shadow: 0 0 10px #00ff00;
+    }
+
+    .indicator.warning::before {
+        background: #ffff00;
+        box-shadow: 0 0 10px #ffff00;
+        animation: warningBlink 1s ease-in-out infinite;
+    }
+
+    .indicator.error::before {
+        background: #ff0000;
+        box-shadow: 0 0 10px #ff0000;
+        animation: errorBlink 0.5s ease-in-out infinite;
+    }
+
+    @keyframes indicatorPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    @keyframes warningBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    @keyframes errorBlink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .indicator::after {
+        content: attr(data-label);
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .status-message {
+        font-family: 'Rajdhani', sans-serif;
+        color: rgba(0, 255, 255, 0.8);
+        font-size: 14px;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .typing-text {
+        display: inline-block;
+        position: relative;
+    }
+
+    .typing-text::after {
+        content: '|';
+        position: absolute;
+        right: -10px;
+        color: #00ffff;
+        animation: typingCursor 1s ease-in-out infinite;
+    }
+
+    @keyframes typingCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    /* Enhanced responsiveness */
+    @media (max-width: 768px) {
+        .status-title {
+            font-size: 18px;
+        }
+        
+        .status-indicators {
+            gap: 10px;
+        }
+        
+        .indicator {
+            font-size: 10px;
+        }
+    }
 </style>
 @endpush
 
@@ -393,9 +898,64 @@
 <!-- Dashboard Scan Line -->
 <div class="dashboard-scan"></div>
 
+<!-- Floating Particles -->
+<div class="particles-container">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
+
+<!-- Circuit Pattern Overlay -->
+<div class="circuit-pattern"></div>
+
+<!-- Holographic Display Effect -->
+<div class="holographic-overlay"></div>
+
+<!-- HUD Frames -->
+<div class="hud-frame top-left"></div>
+<div class="hud-frame top-right"></div>
+<div class="hud-frame bottom-left"></div>
+<div class="hud-frame bottom-right"></div>
+
+<!-- Matrix Rain Effect -->
+<div class="matrix-rain"></div>
+
 <div class="row">
     <div class="col-12">
-        
+
+        <!-- System Status Display -->
+        <div class="system-status mb-4">
+            <div class="status-header">
+                <div class="status-title glitch-text">SYSTEM STATUS: ONLINE</div>
+                <div class="status-indicators">
+                    <span class="indicator active" data-label="NEURAL CORE"></span>
+                    <span class="indicator active" data-label="QUANTUM PROCESSOR"></span>
+                    <span class="indicator active" data-label="DATA MATRIX"></span>
+                    <span class="indicator warning" data-label="SECURITY PROTOCOL"></span>
+                </div>
+            </div>
+            <div class="status-message">
+                <span class="typing-text">Welcome to Neural Command Center. All systems operational. Quantum encryption active.</span>
+            </div>
+        </div>
+
         <!-- Alert Section -->
         <div class="row">
         @if($data['cutout_pro_limit_over']==1)
