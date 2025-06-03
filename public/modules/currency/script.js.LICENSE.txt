@@ -1,0 +1,19 @@
+/*!
+  * shared v9.9.1
+  * (c) 2024 kazuya kawaguchi
+  * Released under the MIT License.
+  */
+
+/*!
+  * vue-i18n v9.9.1
+  * (c) 2024 kazuya kawaguchi
+  * Released under the MIT License.
+  */
+
+/*! #__NO_SIDE_EFFECTS__ */
+
+/**
+* @vue/shared v3.4.19
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/

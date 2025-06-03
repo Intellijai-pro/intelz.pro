@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'title' => 'المستخدمون',
+    'singular_title' => 'مستخدم',
+    'lbl_first_name' => 'الاسم الأول',
+    'lbl_last_name' => 'الاسم الأخير',
+    'lbl_Email' => 'البريد الإلكتروني',
+    'lbl_phone_number' => 'رقم الهاتف',
+    'lbl_gender' => 'الجنس',
+    'lbl_status' => 'الحالة',
+    'lbl_verification_status' => 'حالة التحقق',
+    'lbl_blocked' => 'محظور',
+    'msg_verified' => 'تم التحقق',
+    'lbl_action'=>'الإجراء',
+    'lbl_fullname' => 'الاسم الكامل',
+    'lbl_male' => 'ذكر',
+    'lbl_female' => 'أنثى',
+    'lbl_other' => 'آخر',
+    'lbl_password'=>'كلمة المرور',
+    'lbl_confirm_password'=>'تأكيد كلمة المرور',
+    'lbl_title' => 'العنوان',
+    'lbl_description'=>'الوصف',
+    'lbl_name' => 'الاسم',
+];
