@@ -25,6 +25,29 @@ $notifications_latest = optional($notifications)->take(5);
                     </svg>
                 </i>
             </div>
+            {{-- Modern Search Bar --}}
+            <div class="modern-search-container mx-3 flex-grow-1 d-none d-md-block" style="max-width: 500px;">
+                <div class="position-relative">
+                    <div class="modern-search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" 
+                               class="form-control modern-search-input" 
+                               id="globalSearch" 
+                               placeholder="Search users, customers, employees..." 
+                               autocomplete="off">
+                        <div class="search-loader d-none">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-search-results d-none" id="searchResults">
+                        <div class="search-results-inner">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{-- <div>
                 @php
 
@@ -77,6 +100,12 @@ $notifications_latest = optional($notifications)->take(5);
             </div>
             <div class="collapse navbar-collapse header-right-panel" id="navbarSupportedContent">
                 <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+                    {{-- Mobile Search Button --}}
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown me-0 me-xl-3">
                         <div class="d-flex align-items-center mr-2 iq-font-style" role="group" aria-label="First group">
                             <input type="radio" class="btn-check" name="theme_font_size" value="theme-fs-sm" id="font-size-sm" checked>
@@ -276,6 +305,195 @@ $notifications_latest = optional($notifications)->take(5);
     </div>
 </nav>
 
+{{-- Mobile Search Modal --}}
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="position-relative">
+                    <div class="modern-search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" 
+                               class="form-control modern-search-input" 
+                               id="mobileGlobalSearch" 
+                               placeholder="Search users, customers, employees..." 
+                               autocomplete="off">
+                        <div class="search-loader d-none">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modern-search-results mt-3" id="mobileSearchResults">
+                        <div class="search-results-inner">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('after-styles')
+<style>
+/* Modern Search Styles */
+.modern-search-container {
+    position: relative;
+    z-index: 100;
+}
+
+.modern-search-input-wrapper {
+    position: relative;
+}
+
+.modern-search-input {
+    padding: 0.75rem 1rem 0.75rem 3rem !important;
+    border-radius: 12px !important;
+    border: 2px solid transparent !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.95rem !important;
+}
+
+[data-bs-theme="dark"] .modern-search-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #fff !important;
+}
+
+.modern-search-input:focus {
+    background: white !important;
+    border-color: var(--bs-primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.1) !important;
+    outline: none !important;
+}
+
+[data-bs-theme="dark"] .modern-search-input:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    z-index: 10;
+}
+
+.search-loader {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modern-search-results {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1055;
+}
+
+[data-bs-theme="dark"] .modern-search-results {
+    background: #1a1a2e;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.search-results-inner {
+    padding: 0.5rem;
+}
+
+.search-result-item {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-result-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.search-result-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bs-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-name {
+    font-weight: 600;
+    margin-bottom: 0.125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.search-result-type {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.search-no-results {
+    padding: 2rem;
+    text-align: center;
+    color: #6c757d;
+}
+
+.search-category-header {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(0, 0, 0, 0.03);
+    margin: 0.25rem 0;
+    border-radius: 6px;
+}
+
+[data-bs-theme="dark"] .search-category-header {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Mobile specific */
+#searchModal .modern-search-results {
+    position: static;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="dark"] #searchModal .modern-search-results {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+</style>
+@endpush
+
 @push('after-scripts')
 
 
@@ -306,6 +524,145 @@ $(document).ready(function() {
     $('.notification_list').on('click', function() {
         notificationList();
     });
+    
+    // Modern Search Implementation
+    let searchTimeout;
+    const searchUrl = "{{ route('backend.get_search_data') }}";
+    
+    function initializeSearch(inputId, resultsId) {
+        const searchInput = document.getElementById(inputId);
+        const searchResults = document.getElementById(resultsId);
+        const searchLoader = searchInput.parentElement.querySelector('.search-loader');
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            const query = this.value.trim();
+            
+            if (query.length < 2) {
+                searchResults.classList.add('d-none');
+                return;
+            }
+            
+            searchLoader.classList.remove('d-none');
+            
+            searchTimeout = setTimeout(() => {
+                performSearch(query, searchResults, searchLoader);
+            }, 300);
+        });
+        
+        // Hide results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.modern-search-container') && !e.target.closest('#searchModal')) {
+                searchResults.classList.add('d-none');
+            }
+        });
+        
+        // Show results when focusing on input
+        searchInput.addEventListener('focus', function() {
+            if (this.value.trim().length >= 2 && searchResults.querySelector('.search-result-item')) {
+                searchResults.classList.remove('d-none');
+            }
+        });
+    }
+    
+    function performSearch(query, resultsContainer, loader) {
+        // Search for multiple types
+        const searchTypes = ['customers', 'employees'];
+        const promises = searchTypes.map(type => 
+            $.ajax({
+                url: searchUrl,
+                type: 'GET',
+                data: {
+                    type: type,
+                    q: query
+                }
+            })
+        );
+        
+        Promise.all(promises).then(responses => {
+            loader.classList.add('d-none');
+            displaySearchResults(responses, resultsContainer, query);
+        }).catch(error => {
+            loader.classList.add('d-none');
+            console.error('Search error:', error);
+        });
+    }
+    
+    function displaySearchResults(responses, container, query) {
+        const resultsInner = container.querySelector('.search-results-inner');
+        resultsInner.innerHTML = '';
+        
+        let hasResults = false;
+        
+        // Combine and display results
+        const categories = [
+            { name: 'Customers', data: responses[0]?.results || [], icon: 'fa-user' },
+            { name: 'Employees', data: responses[1]?.results || [], icon: 'fa-user-tie' }
+        ];
+        
+        categories.forEach(category => {
+            if (category.data.length > 0) {
+                hasResults = true;
+                
+                // Add category header
+                const categoryHeader = document.createElement('div');
+                categoryHeader.className = 'search-category-header';
+                categoryHeader.textContent = category.name;
+                resultsInner.appendChild(categoryHeader);
+                
+                // Add results
+                category.data.forEach(item => {
+                    const resultItem = createResultItem(item, category.icon);
+                    resultsInner.appendChild(resultItem);
+                });
+            }
+        });
+        
+        if (!hasResults) {
+            resultsInner.innerHTML = `
+                <div class="search-no-results">
+                    <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+                    <p class="mb-0">No results found for "${query}"</p>
+                </div>
+            `;
+        }
+        
+        container.classList.remove('d-none');
+    }
+    
+    function createResultItem(item, icon) {
+        const div = document.createElement('div');
+        div.className = 'search-result-item';
+        
+        const initials = item.text.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        
+        div.innerHTML = `
+            <div class="search-result-avatar">
+                ${initials}
+            </div>
+            <div class="search-result-info">
+                <div class="search-result-name">${highlightMatch(item.text, item.text)}</div>
+                <div class="search-result-type">ID: ${item.id}</div>
+            </div>
+            <i class="fas fa-chevron-right text-muted"></i>
+        `;
+        
+        div.addEventListener('click', function() {
+            // Navigate to user profile or details page
+            window.location.href = `/app/users/${item.id}`;
+        });
+        
+        return div;
+    }
+    
+    function highlightMatch(text, query) {
+        // Simple highlight function - can be improved
+        return text;
+    }
+    
+    // Initialize search for both desktop and mobile
+    initializeSearch('globalSearch', 'searchResults');
+    initializeSearch('mobileGlobalSearch', 'mobileSearchResults');
 });
 
 function notificationList(type = '') {

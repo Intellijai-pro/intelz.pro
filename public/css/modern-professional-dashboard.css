@@ -1,0 +1,6242 @@
+/* Modern Professional Dashboard - Clean & Sophisticated Design */
+
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Root Variables */
+:root {
+    /* Color Palette */
+    --modern-primary: #5E72E4;
+    --modern-secondary: #825EE4;
+    --modern-success: #2DCE89;
+    --modern-info: #11CDEF;
+    --modern-warning: #FB6340;
+    --modern-danger: #F5365C;
+    
+    /* Neutral Colors */
+    --modern-dark: #32325D;
+    --modern-gray-900: #212529;
+    --modern-gray-800: #32325D;
+    --modern-gray-700: #525F7F;
+    --modern-gray-600: #5E72E4;
+    --modern-gray-500: #ADB5BD;
+    --modern-gray-400: #CED4DA;
+    --modern-gray-300: #DEE2E6;
+    --modern-gray-200: #E9ECEF;
+    --modern-gray-100: #F6F9FC;
+    --modern-white: #FFFFFF;
+    
+    /* Background Colors */
+    --modern-bg-primary: #F7FAFC;
+    --modern-bg-secondary: #FFFFFF;
+    --modern-bg-gradient: linear-gradient(87deg, #5E72E4 0, #825EE4 100%);
+    
+    /* Typography */
+    --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+    
+    /* Shadows */
+    --shadow-sm: 0 0 .5rem rgba(0,0,0,.03);
+    --shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    --shadow-lg: 0 0 3rem rgba(0,0,0,.175);
+    --shadow-lift: 0 1rem 3rem rgba(0,0,0,.175);
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-primary) !important;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--modern-gray-700) !important;
+    background-color: var(--modern-bg-primary) !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary) !important;
+    font-weight: 600;
+    color: var(--modern-dark) !important;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+    text-transform: none !important;
+    letter-spacing: -0.02em !important;
+}
+
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+    color: var(--modern-gray-700);
+}
+
+/* Remove all futuristic theme elements */
+body::before,
+body::after,
+.quantum-field,
+.neural-network,
+.ar-grid {
+    display: none !important;
+}
+
+/* Sidebar Styling */
+.sidebar-base {
+    background: var(--modern-white) !important;
+    border-right: 1px solid var(--modern-gray-200) !important;
+    box-shadow: var(--shadow-sm) !important;
+    width: 280px !important;
+    transition: all 0.2s ease;
+}
+
+.sidebar-base::before,
+.sidebar-base::after {
+    display: none !important;
+}
+
+/* Logo Area */
+.logo-main {
+    padding: 1.5rem !important;
+    border-bottom: 1px solid var(--modern-gray-200);
+    margin-bottom: 0 !important;
+}
+
+.logo-main::after {
+    display: none !important;
+}
+
+/* Navigation Items */
+.iq-main-menu {
+    padding: var(--spacing-lg) 0;
+}
+
+.iq-main-menu .nav-link {
+    color: var(--modern-gray-700) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 500 !important;
+    padding: 0.75rem 1.5rem !important;
+    margin: 0.125rem 1rem !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.15s ease !important;
+    display: flex;
+    align-items: center;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
+.iq-main-menu .nav-link::before {
+    display: none !important;
+}
+
+.iq-main-menu .nav-link:hover {
+    background: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    transform: translateX(0) !important;
+    padding-left: 1.5rem !important;
+}
+
+.iq-main-menu .nav-link.active {
+    background: var(--modern-bg-gradient) !important;
+    color: var(--modern-white) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.iq-main-menu .nav-link svg,
+.iq-main-menu .nav-link i {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    margin-right: 0.75rem !important;
+    color: currentColor !important;
+    filter: none !important;
+}
+
+/* Header Navbar */
+.iq-navbar {
+    background: var(--modern-white) !important;
+    border-bottom: 0 !important;
+    box-shadow: var(--shadow-sm) !important;
+    padding: 1rem 2rem !important;
+    margin-bottom: 2rem;
+}
+
+.iq-navbar h4 {
+    color: var(--modern-dark) !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--modern-dark) !important;
+    animation: none !important;
+}
+
+/* Main Content */
+.main-content {
+    background: var(--modern-bg-primary) !important;
+    min-height: 100vh;
+}
+
+.content-inner {
+    padding: 0 2rem 2rem !important;
+}
+
+/* Dashboard Cards */
+.card {
+    background: var(--modern-white) !important;
+    border: 0 !important;
+    border-radius: 0.75rem !important;
+    box-shadow: var(--shadow) !important;
+    transition: all 0.15s ease !important;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--modern-gray-200) !important;
+    padding: 1.5rem !important;
+}
+
+.card-body {
+    padding: 1.5rem !important;
+}
+
+/* Stats Cards */
+.stats-card {
+    background: var(--modern-white) !important;
+    border: 0 !important;
+    border-radius: 0.75rem !important;
+    box-shadow: var(--shadow) !important;
+    padding: 1.5rem !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.15s ease;
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: var(--modern-bg-gradient);
+    opacity: 0.1;
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.stats-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.stats-icon.bg-gradient-primary {
+    background: var(--modern-bg-gradient) !important;
+    color: white;
+}
+
+.stats-icon.bg-gradient-success {
+    background: linear-gradient(87deg, #2DCE89 0, #3FD69F 100%) !important;
+    color: white;
+}
+
+.stats-icon.bg-gradient-info {
+    background: linear-gradient(87deg, #11CDEF 0, #1ED8F4 100%) !important;
+    color: white;
+}
+
+.stats-icon.bg-gradient-warning {
+    background: linear-gradient(87deg, #FB6340 0, #FD7D57 100%) !important;
+    color: white;
+}
+
+.stats-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--modern-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.stats-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--modern-dark);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stats-change {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.stats-change.positive {
+    color: var(--modern-success);
+}
+
+.stats-change.negative {
+    color: var(--modern-danger);
+}
+
+/* Chart Containers */
+.chart-container {
+    background: var(--modern-white) !important;
+    border-radius: 0.75rem !important;
+    box-shadow: var(--shadow) !important;
+    padding: 1.5rem !important;
+    height: 100%;
+    min-height: 400px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.chart-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--modern-dark);
+    margin: 0;
+}
+
+/* Buttons */
+.btn {
+    font-family: var(--font-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    padding: 0.625rem 1.25rem !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.15s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0.025em !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.btn-primary {
+    background: var(--modern-bg-gradient) !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow) !important;
+}
+
+.btn-light {
+    background: var(--modern-gray-100) !important;
+    color: var(--modern-gray-700) !important;
+}
+
+.btn-light:hover {
+    background: var(--modern-gray-200) !important;
+}
+
+.btn-sm {
+    padding: 0.375rem 0.75rem !important;
+    font-size: 0.8125rem !important;
+}
+
+/* Tables */
+.table {
+    background: transparent !important;
+}
+
+.table thead th {
+    background: var(--modern-gray-100) !important;
+    color: var(--modern-gray-600) !important;
+    font-weight: 600 !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: 0 !important;
+    padding: 1rem !important;
+}
+
+.table tbody td {
+    color: var(--modern-gray-700) !important;
+    font-size: 0.9375rem !important;
+    border-top: 1px solid var(--modern-gray-200) !important;
+    padding: 1rem !important;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background: var(--modern-gray-50) !important;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    background: var(--modern-white) !important;
+    border: 1px solid var(--modern-gray-300) !important;
+    border-radius: 0.5rem !important;
+    color: var(--modern-gray-700) !important;
+    font-size: 0.9375rem !important;
+    padding: 0.625rem 0.75rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--modern-white) !important;
+    border-color: var(--modern-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25) !important;
+    outline: none !important;
+}
+
+/* Activity Feed */
+.activity-feed {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.activity-item {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--modern-gray-200);
+}
+
+.activity-item:last-child {
+    border-bottom: 0;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: 600;
+    color: var(--modern-dark);
+    margin-bottom: 0.25rem;
+}
+
+.activity-text {
+    color: var(--modern-gray-600);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    color: var(--modern-gray-500);
+    font-size: 0.8125rem;
+}
+
+/* Progress Bars */
+.progress {
+    height: 0.5rem;
+    background: var(--modern-gray-200);
+    border-radius: 0.25rem;
+    overflow: visible;
+}
+
+.progress-bar {
+    background: var(--modern-bg-gradient);
+    border-radius: 0.25rem;
+    position: relative;
+    overflow: visible;
+}
+
+/* Badges */
+.badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 0.375rem;
+}
+
+.badge-success {
+    background: rgba(45, 206, 137, 0.1);
+    color: var(--modern-success);
+}
+
+.badge-danger {
+    background: rgba(245, 54, 92, 0.1);
+    color: var(--modern-danger);
+}
+
+.badge-warning {
+    background: rgba(251, 99, 64, 0.1);
+    color: var(--modern-warning);
+}
+
+.badge-info {
+    background: rgba(17, 205, 239, 0.1);
+    color: var(--modern-info);
+}
+
+/* Loading State */
+#loading {
+    background: var(--modern-white) !important;
+}
+
+#loading::before {
+    content: 'Loading...' !important;
+    font-family: var(--font-primary) !important;
+    color: var(--modern-gray-600) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    animation: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Grid System */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-grid-xl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar-base {
+        transform: translateX(-100%);
+    }
+    
+    .content-inner {
+        padding: 1rem !important;
+    }
+    
+    .stats-number {
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-grid,
+    .dashboard-grid-xl {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark mode adjustments */
+[data-bs-theme="dark"] {
+    --modern-bg-primary: #1a1a2e;
+    --modern-bg-secondary: #16213e;
+    --modern-white: #0f3460;
+    --modern-gray-100: #16213e;
+    --modern-gray-200: #1a1a2e;
+    --modern-gray-300: #2d2d44;
+    --modern-gray-700: #e4e4e4;
+    --modern-dark: #ffffff;
+}
+
+/* Remove futuristic animations */
+@keyframes none {} 
+
+/* Icon Visibility for Light Mode */
+.ph,
+[class*="ph-"] {
+    color: var(--modern-gray-700);
+    transition: color 0.2s ease;
+}
+
+.text-primary .ph,
+.text-primary [class*="ph-"] {
+    color: var(--modern-primary) !important;
+}
+
+.text-success .ph,
+.text-success [class*="ph-"] {
+    color: var(--modern-success) !important;
+}
+
+.text-info .ph,
+.text-info [class*="ph-"] {
+    color: var(--modern-info) !important;
+}
+
+.text-warning .ph,
+.text-warning [class*="ph-"] {
+    color: var(--modern-warning) !important;
+}
+
+.text-danger .ph,
+.text-danger [class*="ph-"] {
+    color: var(--modern-danger) !important;
+}
+
+/* Section Header Icons */
+.section-header h3 i {
+    font-size: 1.25rem;
+    vertical-align: middle;
+}
+
+/* Stats Card Icons */
+.stats-icon i {
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+/* Card Header Icons */
+.card-header h5 i {
+    font-size: 1.125rem;
+    vertical-align: middle;
+}
+
+/* Small Icons in Text */
+h6 i {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* Button Icons */
+.btn i {
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.btn-sm i {
+    font-size: 0.875rem;
+}
+
+/* Badge Icons */
+.badge i {
+    font-size: 0.75rem;
+    vertical-align: middle;
+}
+
+/* Ensure icons in muted text are visible */
+.text-muted i {
+    opacity: 0.7;
+}
+
+/* Hover effects for interactive icons */
+.btn:hover i,
+.dropdown-item:hover i {
+    transform: translateX(2px);
+}
+
+.btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Activity Icon improvements */
+.activity-icon i,
+.transaction-type-indicator i {
+    color: white !important;
+    font-size: 0.875rem;
+}
+
+/* Plan icon wrapper */
+.plan-icon-wrapper i {
+    color: var(--modern-primary) !important;
+    font-size: 1rem;
+}
+
+/* Empty state icons */
+.empty-state i {
+    color: var(--modern-gray-400) !important;
+    opacity: 1;
+}
+
+/* Filter dropdown icons */
+.dropdown-item i {
+    color: inherit;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Table action icons */
+.btn-group .btn i {
+    color: var(--modern-gray-600);
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary);
+}
+
+/* Input group icons */
+.input-group-text i {
+    color: var(--modern-gray-600);
+    font-size: 1rem;
+}
+
+/* Rotating animation for refresh icon */
+.rotating i {
+    display: inline-block;
+}
+
+/* Dark mode icon adjustments */
+[data-bs-theme="dark"] .ph,
+[data-bs-theme="dark"] [class*="ph-"] {
+    color: var(--modern-gray-300);
+}
+
+[data-bs-theme="dark"] .text-muted i {
+    opacity: 0.8;
+}
+
+[data-bs-theme="dark"] .section-header h3 i,
+[data-bs-theme="dark"] .card-header h5 i {
+    opacity: 0.9;
+}
+
+/* Specific icon color fixes for better visibility */
+.iq-main-menu .nav-link i {
+    color: currentColor !important;
+}
+
+/* Loading spinner icon */
+.ph-spin {
+    display: inline-block;
+}
+
+/* Icon Animation Effects */
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Hover animations for icons */
+.stats-card:hover .stats-icon i {
+    animation: iconPulse 0.6s ease-in-out;
+}
+
+.btn:hover i {
+    animation: iconBounce 0.3s ease;
+}
+
+/* Icon colors for better visibility in light mode */
+.section-header h3 i {
+    opacity: 0.9;
+}
+
+.card-header h5 i {
+    opacity: 0.85;
+}
+
+/* Ensure all Phosphor icons are visible */
+i[class^="ph-"],
+i[class*=" ph-"] {
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Stats card icon containers ensure visibility */
+.stats-icon {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown item icons */
+.dropdown-item i {
+    width: 1.25rem;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Alert section icons */
+.card.border-warning i {
+    color: var(--modern-warning);
+}
+
+/* Success rate and other colored text icons */
+.text-primary i { color: var(--modern-primary) !important; }
+.text-success i { color: var(--modern-success) !important; }
+.text-info i { color: var(--modern-info) !important; }
+.text-warning i { color: var(--modern-warning) !important; }
+.text-danger i { color: var(--modern-danger) !important; }
+
+/* Badge icon alignment */
+.badge i + span,
+.badge span + i {
+    margin-left: 0.25rem;
+}
+
+/* Refresh button specific */
+.ph-arrows-clockwise {
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .ph-arrows-clockwise {
+    transform: rotate(180deg);
+}
+
+/* Calendar icons in dropdowns */
+.ph-calendar,
+.ph-calendar-blank,
+.ph-calendar-x {
+    font-size: 0.9rem;
+}
+
+/* Transaction type indicators */
+.transaction-type-indicator {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state icon animation */
+@keyframes emptyStateFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-5deg); }
+    75% { transform: translateY(-5px) rotate(5deg); }
+}
+
+.empty-state-icon > div {
+    animation: emptyStateFloat 4s ease-in-out infinite;
+}
+
+/* Chart header icons */
+.chart-header h5 i {
+    font-size: 1.125rem;
+    vertical-align: text-bottom;
+}
+
+/* Icon focus states for accessibility */
+.btn:focus i,
+.dropdown-item:focus i {
+    outline: 2px solid var(--modern-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Avatar Styles */
+.avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    background: var(--modern-gray-100);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--modern-gray-600);
+}
+
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+}
+
+.avatar-lg {
+    width: 48px;
+    height: 48px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure proper chart container sizing */
+.chart-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+#total-revenue-chart,
+#user-chart,
+#popular-content {
+    width: 100% !important;
+}
+
+/* Additional improvements for the dashboard */
+.stats-grid .stats-card {
+    height: 100%;
+}
+
+.activity-timeline .activity-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.ph-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Print styles */
+@media print {
+    .btn, .dropdown, #refreshRevenuechart {
+        display: none !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* Enhanced Transaction History Styles */
+.transaction-table-container {
+    position: relative;
+}
+
+.transaction-table-container .table {
+    margin-bottom: 0;
+}
+
+.transaction-table-container .table th {
+    white-space: nowrap;
+    background-color: var(--modern-gray-100);
+    border-bottom: 2px solid var(--modern-gray-200);
+}
+
+.transaction-table-container .table td {
+    vertical-align: middle;
+}
+
+.transaction-row {
+    position: relative;
+    cursor: pointer;
+}
+
+.transaction-row:hover {
+    background-color: rgba(94, 114, 228, 0.04);
+}
+
+.transaction-row.selected {
+    background-color: rgba(94, 114, 228, 0.08);
+}
+
+/* Enhanced Avatar Styles */
+.avatar-wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+.avatar.bg-gradient-primary {
+    background: var(--modern-bg-gradient) !important;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Plan Icons */
+.plan-icon-wrapper {
+    width: 32px;
+    height: 32px;
+    background: rgba(94, 114, 228, 0.1);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+}
+
+.plan-icon-wrapper i {
+    color: var(--modern-primary);
+}
+
+/* Enhanced Badge Styles */
+.badge {
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.badge i {
+    font-size: 0.875rem;
+}
+
+/* Search Input Enhancement */
+.input-group-text {
+    background-color: var(--modern-gray-100) !important;
+    border-color: var(--modern-gray-300) !important;
+}
+
+.form-control.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    border-color: var(--modern-gray-300) !important;
+}
+
+.form-control.bg-light:focus {
+    background-color: var(--modern-white) !important;
+    border-color: var(--modern-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25) !important;
+}
+
+/* Transaction Summary Cards */
+.transaction-summary-card {
+    background: var(--modern-gray-100);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.transaction-summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Empty State Styling */
+.empty-state {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.empty-state i {
+    color: var(--modern-gray-400);
+    margin-bottom: 1rem;
+}
+
+.empty-state h6 {
+    color: var(--modern-gray-700);
+    font-weight: 600;
+}
+
+.empty-state p {
+    color: var(--modern-gray-500);
+    font-size: 0.875rem;
+}
+
+/* Action Buttons Group */
+.btn-group .btn {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--modern-gray-200);
+    background: var(--modern-white);
+    color: var(--modern-gray-700);
+}
+
+.btn-group .btn:hover {
+    background: var(--modern-gray-100);
+    border-color: var(--modern-gray-300);
+    color: var(--modern-primary);
+}
+
+.btn-group .btn:focus {
+    box-shadow: none;
+}
+
+/* Dropdown Menu Enhancement */
+.dropdown-menu {
+    border: 1px solid var(--modern-gray-200);
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: var(--modern-gray-700);
+    transition: all 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--modern-gray-100);
+    color: var(--modern-primary);
+}
+
+.dropdown-item.text-danger:hover {
+    background: rgba(245, 54, 92, 0.1);
+    color: var(--modern-danger);
+}
+
+/* Pagination Enhancement */
+.pagination {
+    gap: 0.25rem;
+}
+
+.page-link {
+    border: 1px solid var(--modern-gray-200);
+    color: var(--modern-gray-700);
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.page-link:hover {
+    background: var(--modern-gray-100);
+    border-color: var(--modern-gray-300);
+    color: var(--modern-primary);
+}
+
+.page-item.active .page-link {
+    background: var(--modern-bg-gradient);
+    border-color: transparent;
+    color: white;
+}
+
+.page-item.disabled .page-link {
+    background: var(--modern-gray-100);
+    border-color: var(--modern-gray-200);
+    color: var(--modern-gray-400);
+}
+
+/* Form Check Enhancement */
+.form-check-input {
+    width: 1.125rem;
+    height: 1.125rem;
+    border: 2px solid var(--modern-gray-300);
+    transition: all 0.15s ease;
+}
+
+.form-check-input:checked {
+    background-color: var(--modern-primary);
+    border-color: var(--modern-primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--modern-primary);
+    box-shadow: 0 0 0 0.2rem rgba(94, 114, 228, 0.25);
+}
+
+/* Responsive Transaction Table */
+@media (max-width: 992px) {
+    .transaction-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        min-width: 800px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-header .col-lg-6 {
+        margin-bottom: 1rem;
+    }
+    
+    .btn-group {
+        display: flex;
+        width: 100%;
+    }
+    
+    .btn-group .btn {
+        flex: 1;
+    }
+}
+
+/* Dark Mode Transaction Table Adjustments */
+[data-bs-theme="dark"] .transaction-table-container .table th {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-row:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .plan-icon-wrapper {
+    background: rgba(94, 114, 228, 0.2);
+}
+
+/* Enhanced Recent Transactions Styles */
+.recent-transactions-container {
+    position: relative;
+}
+
+.transaction-item {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.04);
+    transform: translateX(4px);
+}
+
+.transaction-type-indicator {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--modern-white);
+    font-size: 0.625rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.bg-primary { background-color: var(--modern-primary) !important; }
+.bg-success { background-color: var(--modern-success) !important; }
+.bg-info { background-color: var(--modern-info) !important; }
+.bg-warning { background-color: var(--modern-warning) !important; }
+.bg-danger { background-color: var(--modern-danger) !important; }
+
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .btn-light:hover i {
+    color: var(--modern-primary);
+}
+
+/* Fix Header/Navbar Icons in Light Mode */
+.iq-navbar i[class*="ph-"],
+.iq-navbar .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.iq-navbar .btn i {
+    color: var(--modern-gray-700) !important;
+}
+
+.iq-navbar .dropdown-toggle i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Fix Action Button Icons */
+.btn-group .btn i[class*="ph-"],
+.btn-group .btn .ph {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.btn-group .btn:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Transaction Actions Icons */
+.transaction-actions .btn-link i {
+    color: var(--modern-gray-600) !important;
+    opacity: 1 !important;
+}
+
+.transaction-actions .btn-link:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Dropdown Icons Fix */
+.dropdown-menu .dropdown-item i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-item:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Table Action Icons Visibility */
+td .btn i,
+td .btn-sm i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+td .btn:hover i,
+td .btn-sm:hover i {
+    color: var(--modern-primary) !important;
+}
+
+/* Profile and User Menu Icons */
+.iq-user-dropdown i,
+.navbar-nav i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Notification Icons */
+.iq-sub-dropdown i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Search Bar Icons */
+.iq-search-bar i {
+    color: var(--modern-gray-700) !important;
+}
+
+/* Ensure all Phosphor Icons are visible */
+i[class*="ph-"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+/* Override any inherited opacity */
+.btn i,
+.dropdown-item i,
+.navbar i,
+.table i {
+    opacity: 1 !important;
+}
+
+/* Specific fixes for common header icons */
+.ph-magnifying-glass,
+.ph-bell,
+.ph-user,
+.ph-gear,
+.ph-sign-out,
+.ph-dots-three-vertical,
+.ph-eye,
+.ph-download-simple,
+.ph-envelope-simple,
+.ph-arrow-u-up-left,
+.ph-warning,
+.ph-funnel,
+.ph-arrows-clockwise {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    animation: none !important;
+}
+
+/* Light mode header specific */
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] header i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Transaction table specific icons */
+[data-bs-theme="light"] .transaction-row i,
+[data-bs-theme="light"] .btn-group i {
+    color: var(--modern-gray-700) !important;
+    opacity: 1 !important;
+}
+
+/* Avatar Styles */
+.avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.transaction-actions .btn-link {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.transaction-actions .btn-link:hover {
+    background-color: var(--modern-gray-100);
+}
+
+.badge.small {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.progress {
+    overflow: visible;
+    background-color: var(--modern-gray-200);
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.empty-state {
+    padding: 2rem;
+}
+
+.empty-state-icon {
+    display: inline-block;
+}
+
+.empty-state h6 {
+    color: var(--modern-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--modern-gray-600);
+    margin: 0;
+}
+
+/* Real-time Badge */
+.badge.bg-light {
+    background-color: var(--modern-gray-100) !important;
+    color: var(--modern-primary) !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Refresh Button Animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.rotating {
+    animation: rotate 0.8s linear;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+.empty-state-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Recent Transactions */
+.recent-transactions-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-gray-400) var(--modern-gray-100);
+}
+
+.recent-transactions-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-track {
+    background: var(--modern-gray-100);
+    border-radius: 3px;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb {
+    background: var(--modern-gray-400);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.recent-transactions-container::-webkit-scrollbar-thumb:hover {
+    background: var(--modern-gray-500);
+}
+
+/* Notification Styles */
+.alert {
+    min-width: 250px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Adjustments for Recent Transactions */
+[data-bs-theme="dark"] .transaction-item:hover {
+    background-color: rgba(94, 114, 228, 0.1);
+}
+
+[data-bs-theme="dark"] .transaction-type-indicator {
+    border-color: var(--modern-gray-800);
+}
+
+[data-bs-theme="dark"] .empty-state-icon .bg-light {
+    background-color: var(--modern-gray-800) !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-light {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Recent Transactions */
+@media (max-width: 768px) {
+    .transaction-item .d-flex.gap-3 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .transaction-item .d-flex.gap-3 span {
+        font-size: 0.75rem;
+    }
+    
+    .transaction-actions {
+        position: static;
+        opacity: 1;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Additional Hover Effects */
+.transaction-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--modern-primary);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.transaction-item:hover::before {
+    transform: translateX(0);
+}
+
+/* Light mode specific adjustments */
+body[data-bs-theme="light"] .ph,
+body[data-bs-theme="light"] [class*="ph-"] {
+    color: var(--modern-gray-700);
+}
+
+body[data-bs-theme="light"] .text-muted i {
+    color: var(--modern-gray-600);
+    opacity: 0.8;
+}
+
+body[data-bs-theme="light"] .btn-light i {

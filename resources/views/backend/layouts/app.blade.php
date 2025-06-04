@@ -41,6 +41,21 @@
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/customizer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/alignment-fix.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/premium-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/icon-visibility-fix.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/modern-dashboard-2025.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/global-visibility-fix.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-top-fix.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard-top-override.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-absolute-top.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar-search-center.css') }}">
+
+    @if(request()->is('backend'))
+        <link rel="stylesheet" href="{{ asset('css/alignment-fix.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/modern-professional-dashboard.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/icon-visibility-fix.css') }}">
+    @endif
 
     <style>
         :root{
@@ -193,7 +208,150 @@
             --neural-overlay-opacity: 0.05;
         }
 
-        /* Global Body Enhancement */
+        /* Critical visibility fixes */
+        /* Fix header z-index and positioning */
+        .iq-navbar {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1030 !important;
+            background: var(--neural-bg-secondary) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--neural-border) !important;
+            box-shadow: 0 2px 20px rgba(0, 255, 255, calc(var(--neural-glow-opacity) * 0.3));
+            transition: all 0.3s ease;
+        }
+
+        /* Fix dropdown visibility */
+        .dropdown-menu,
+        .iq-sub-dropdown {
+            z-index: 1055 !important;
+            position: absolute !important;
+            background: var(--neural-bg-secondary) !important;
+            border: 1px solid var(--neural-border) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Ensure sidebar is properly positioned */
+        .sidebar-base {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            height: 100vh !important;
+            z-index: 1025 !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
+
+        /* Fix main content positioning */
+        .main-content {
+            margin-left: 260px !important;
+            min-height: 100vh !important;
+            position: relative !important;
+            z-index: 1 !important;
+            margin-top: 60px !important; /* Account for fixed navbar */
+        }
+
+        .sidebar-mini .main-content {
+            margin-left: 70px !important;
+        }
+
+        @media (max-width: 1199px) {
+            .main-content {
+                margin-left: 0 !important;
+            }
+        }
+
+        /* Fix content wrapper to prevent header overlap */
+        .wrapper {
+            position: relative !important;
+            overflow: visible !important;
+        }
+
+        /* Ensure dropdowns in header are visible */
+        .navbar-nav .dropdown {
+            position: relative !important;
+        }
+
+        .navbar-nav .dropdown-menu {
+            position: absolute !important;
+            top: calc(100% + 5px) !important;
+            right: 0 !important;
+            left: auto !important;
+            margin-top: 0 !important;
+        }
+
+        /* Fix notification dropdown */
+        .notification_list .iq-sub-dropdown,
+        .iq-user-dropdown .iq-sub-dropdown {
+            position: absolute !important;
+            top: calc(100% + 10px) !important;
+            right: 0 !important;
+            left: auto !important;
+            min-width: 300px !important;
+            max-width: 400px !important;
+            max-height: 500px !important;
+            overflow-y: auto !important;
+        }
+
+        /* Fix sidebar menu items */
+        .iq-sidebar-menu {
+            padding: 1rem 0 !important;
+        }
+
+        .iq-sidebar-menu .nav-item {
+            position: relative !important;
+        }
+
+        /* Fix submenu visibility */
+        .iq-sidebar-menu .collapse,
+        .iq-sidebar-menu .collapsing {
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        /* Ensure content doesn't hide behind fixed header */
+        .content-inner {
+            padding-top: 60px !important; /* Changed from 120px to 60px */
+            min-height: calc(100vh - 80px) !important; /* Adjusted calculation */
+        }
+
+        /* Push main content down for better spacing */
+        .main-content {
+            padding-top: 0 !important;
+            margin-top: 60px !important; /* Account for fixed navbar */
+        }
+
+        /* Add extra spacing for pages with banners */
+        .iq-banner + .container-fluid,
+        .default + .container-fluid {
+            margin-top: 20px !important; /* Changed from 50px to 20px */
+        }
+
+        /* Global page body spacing */
+        .container-fluid.content-inner {
+            padding-top: 70px !important; /* Changed from 140px to 70px */
+            padding-bottom: 60px !important; /* Changed from 80px to 60px */
+        }
+
+        /* Ensure all first elements have proper spacing */
+        .content-inner > *:first-child {
+            margin-top: 0 !important;
+        }
+
+        /* Page header spacing */
+        .page-header,
+        .page-title-box {
+            padding: 20px 0 !important; /* Changed from 40px to 20px */
+            margin-bottom: 20px !important; /* Changed from 40px to 20px */
+        }
+
+        /* Extra spacing after navbar */
+        .iq-navbar {
+            margin-bottom: 0 !important; /* Changed from 70px since navbar is fixed */
+            box-shadow: 0 2px 20px rgba(0, 255, 255, calc(var(--neural-glow-opacity) * 0.3));
+        }
+
+        /* Force minimum height for spacious feel */
         body {
             background: var(--neural-bg) !important;
             font-family: 'Rajdhani', sans-serif !important;
@@ -201,6 +359,8 @@
             position: relative;
             overflow-x: hidden;
             transition: all 0.3s ease;
+            min-height: 100vh;
+            padding-top: 0 !important; /* Changed from 80px to position navbar at top */
         }
 
         /* Animated Background - Only in Dark Mode */
@@ -247,22 +407,6 @@
         @keyframes gridSlide {
             0% { transform: translate(0, 0); }
             100% { transform: translate(-100px, -100px); }
-        }
-
-        /* Enhanced Sidebar Styling */
-        .sidebar-base {
-            background: var(--neural-bg-secondary) !important;
-            backdrop-filter: blur(20px) saturate(180%);
-            border-right: 1px solid var(--neural-border) !important;
-            position: relative;
-            overflow: hidden;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        [data-bs-theme="dark"] .sidebar-base {
-            background: rgba(10, 10, 10, 0.95) !important;
-            border-right: 1px solid rgba(0, 255, 255, 0.2) !important;
         }
 
         /* Sidebar Glow Effect - Only in Dark Mode */
@@ -412,167 +556,6 @@
             transform: scale(1.2) rotate(10deg);
         }
 
-        /* Enhanced Header */
-        .iq-navbar {
-            background: var(--neural-bg-secondary) !important;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--neural-border) !important;
-            box-shadow: 0 2px 20px rgba(0, 255, 255, calc(var(--neural-glow-opacity) * 0.3));
-            transition: all 0.3s ease;
-        }
-
-        [data-bs-theme="dark"] .iq-navbar {
-            background: rgba(10, 10, 10, 0.8) !important;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
-        }
-
-        /* Search Bar Enhancement */
-        .iq-search-bar {
-            background: rgba(0, 255, 255, 0.05) !important;
-            border: 1px solid rgba(0, 255, 255, 0.2) !important;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .iq-search-bar input {
-            background: transparent !important;
-            border: none !important;
-            color: var(--neural-text) !important;
-            font-family: 'Rajdhani', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        .iq-search-bar input::placeholder {
-            color: var(--neural-text-secondary) !important;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        .iq-search-bar:focus-within {
-            box-shadow: 
-                0 0 20px rgba(0, 255, 255, var(--neural-glow-opacity)),
-                inset 0 0 10px rgba(0, 255, 255, 0.1);
-            border-color: var(--neural-primary) !important;
-        }
-
-        /* Notification & Profile Dropdowns */
-        .iq-sub-dropdown {
-            background: var(--neural-bg-secondary) !important;
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--neural-border) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border-radius: 15px !important;
-            overflow: hidden;
-        }
-
-        [data-bs-theme="dark"] .iq-sub-dropdown {
-            background: rgba(10, 10, 10, 0.95) !important;
-            border: 1px solid rgba(0, 255, 255, 0.3) !important;
-        }
-
-        /* Dropdown glow effect - only in dark mode */
-        [data-bs-theme="dark"] .iq-sub-dropdown::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--neural-primary), var(--neural-secondary));
-            animation: dropdownGlow 2s linear infinite;
-        }
-
-        @keyframes dropdownGlow {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--neural-bg);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--neural-primary), var(--neural-secondary));
-            border-radius: 10px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--neural-secondary), var(--neural-primary));
-            background-clip: padding-box;
-        }
-
-        /* Loading Screen Enhancement */
-        #loading {
-            background: var(--neural-bg) !important;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #loading::before {
-            content: 'NEURAL SYSTEM INITIALIZING...';
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Orbitron', monospace;
-            color: var(--neural-primary);
-            font-size: 14px;
-            letter-spacing: 3px;
-            animation: loadingText 1.5s ease-in-out infinite;
-        }
-
-        @keyframes loadingText {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        /* Enhanced Main Content Area */
-        .main-content {
-            background: transparent !important;
-            position: relative;
-        }
-
-        .content-inner {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Page Title Enhancement */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Orbitron', monospace !important;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--neural-text) !important;
-        }
-
-        .iq-navbar h4 {
-            background: linear-gradient(45deg, var(--neural-primary), var(--neural-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3) drop-shadow(0 0 10px rgba(0, 255, 255, var(--neural-glow-opacity))); }
-        }
-
         /* Footer Enhancement */
         .footer {
             background: var(--neural-bg-secondary) !important;
@@ -658,17 +641,6 @@
             border-color: var(--neural-border) !important;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .sidebar-base {
-                background: var(--neural-bg-secondary) !important;
-            }
-            
-            h1, h2, h3, h4, h5, h6 {
-                font-size: calc(1rem + 1vw);
-            }
-        }
-
         /* Pulse Animation for Active Elements */
         @keyframes neuralPulse {
             0%, 100% { 
@@ -701,10 +673,216 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
+
+        /* Extra push for main wrapper */
+        .wrapper {
+            padding-top: 0 !important; /* Changed from 50px */
+        }
+
+        /* Responsive spacing adjustments */
+        @media (max-width: 768px) {
+            .content-inner {
+                padding-top: 40px !important; /* Changed from 80px to 40px */
+            }
+            
+            .container-fluid.content-inner {
+                padding-top: 50px !important; /* Changed from 100px to 50px */
+                padding-bottom: 40px !important; /* Changed from 60px to 40px */
+            }
+            
+            .page-header,
+            .page-title-box {
+                padding: 15px 0 !important; /* Changed from 30px to 15px */
+                margin-bottom: 15px !important; /* Changed from 30px to 15px */
+            }
+            
+            .iq-navbar {
+                margin-bottom: 0 !important;
+            }
+            
+            .wrapper {
+                padding-top: 0 !important;
+            }
+        }
+    </style>
+    
+    <!-- Push all content up override -->
+    <style>
+        /* Global positioning - 15% down from top of viewport */
+        /* 15vh = 15% of viewport height */
+        html body .main-content {
+            margin-top: calc(70px + 15vh) !important; /* 70px for navbar + 15% viewport height */
+            padding-top: 0 !important;
+        }
+        
+        html body .content-inner,
+        html body #page_layout {
+            padding-top: 15px !important;
+        }
+        
+        /* Remove any extra spacing */
+        html body .wrapper {
+            padding-top: 0 !important;
+        }
+        
+        html body .position-relative.iq-banner,
+        html body .position-relative.default {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        /* First children have no margin */
+        html body .content-inner > *:first-child {
+            margin-top: 0 !important;
+        }
+        
+        /* Dashboard specific */
+        html body .dashboard-container {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        
+        /* Add 15% viewport height spacing from top */
+        @media (max-width: 768px) {
+            html body .main-content {
+                margin-top: calc(60px + 15vh) !important; /* Adjusted for mobile */
+            }
+        }
+        
+        /* Force navbar to absolute top position */
+        html body .iq-navbar,
+        html body header.iq-navbar,
+        html body nav.iq-navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 9999 !important;
+            margin: 0 !important;
+            transform: none !important;
+        }
+        
+        /* Center search bar in navbar */
+        html body .modern-search-container {
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 100% !important;
+            max-width: 500px !important;
+            margin: 0 !important;
+            z-index: 10 !important;
+        }
+        
+        /* Ensure navbar has relative positioning for absolute children */
+        html body .iq-navbar .container-fluid,
+        html body .iq-navbar .navbar-inner {
+            position: relative !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            height: 100% !important;
+        }
+        
+        /* Keep other navbar elements in proper position */
+        html body .iq-navbar .navbar-brand,
+        html body .iq-navbar .sidebar-toggle {
+            position: relative !important;
+            z-index: 11 !important;
+        }
+        
+        html body .iq-navbar .right-data {
+            position: relative !important;
+            z-index: 11 !important;
+            margin-left: auto !important;
+        }
+        
+        /* Hide search on mobile */
+        @media (max-width: 768px) {
+            html body .modern-search-container {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
 <body class="{{ !empty(getCustomizationSetting('card_style')) ? getCustomizationSetting('card_style') : '' }} >
+    <script>
+        // Immediate fix for dashboard spacing
+        (function() {
+            var currentPath = window.location.pathname;
+            // Only apply fix on dashboard or backend pages
+            if (currentPath.includes('/backend') || currentPath.includes('/dashboard') || currentPath === '/' || currentPath === '') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Find and hide the banner wrapper if it doesn't have iq-banner class
+                    var bannerWrappers = document.querySelectorAll('.position-relative.default');
+                    bannerWrappers.forEach(function(wrapper) {
+                        if (!wrapper.classList.contains('iq-banner')) {
+                            wrapper.style.display = 'none';
+                        }
+                    });
+                    
+                    // Ensure content starts at top
+                    var contentInner = document.querySelector('.content-inner');
+                    if (contentInner) {
+                        contentInner.style.paddingTop = '1rem';
+                    }
+                });
+            }
+        })();
+    </script>
+    
+    <style>
+        /* Force extra spacing at body level */
+        body {
+            padding-top: 0 !important;
+        }
+        
+        /* Ensure no element can override the minimum spacing */
+        .main-content .content-inner {
+            min-height: 600px !important;
+            padding-top: 60px !important; /* Changed from 120px to 60px */
+        }
+        
+        /* Dashboard gets minimal space - right under navbar */
+        body.dashboard-page .content-inner,
+        .dashboard-container,
+        body:has(.dashboard-container) .content-inner,
+        body:has(.modern-dashboard) .content-inner,
+        body:has(.welcome-section) .content-inner {
+            padding-top: 15px !important; /* Changed from 20px to 15px */
+            min-padding-top: 15px !important; /* Changed from 20px to 15px */
+        }
+        
+        /* Force all pages to respect the spacing */
+        @media screen and (min-width: 769px) {
+            #page_layout {
+                padding-top: 60px !important; /* Changed from 120px to 60px */
+            }
+            
+            /* Dashboard override */
+            #page_layout:has(.dashboard-container),
+            #page_layout:has(.modern-dashboard),
+            #page_layout:has(.welcome-section) {
+                padding-top: 15px !important; /* Changed from 20px to 15px */
+            }
+        }
+        
+        /* Additional forced spacing for non-dashboard pages */
+        .content-inner > div:first-child,
+        .content-inner > section:first-child {
+            margin-top: 15px !important; /* Changed from 30px to 15px */
+        }
+        
+        /* Dashboard first elements have no margin */
+        .dashboard-container > *:first-child,
+        .welcome-section,
+        .content-inner:has(.dashboard-container) > div:first-child {
+            margin-top: 0 !important;
+        }
+    </style>
+    
     <!-- Loader Start -->
     <div id="loading">
         <x-partials._body_loader />
@@ -715,18 +893,18 @@
 
     <!-- /Sidebar -->
     <div class="main-content wrapper">
-        <div class="position-relative  {{ !isset($isBanner) ? 'iq-banner' : '' }} default ">
+        <div class="position-relative  {{ ($isBanner ?? true) ? 'iq-banner' : '' }} default ">
             <!-- Header -->
             @include('backend.includes.header')
             <!-- /Header -->
-            @if (!isset($isBanner))
+            @if ($isBanner ?? true)
             <!-- Header Banner Start-->
                 @include('components.partials.sub-header')
             <!-- Header Banner End-->
             @endif
         </div>
 
-        <div class="conatiner-fluid content-inner pb-0" id="page_layout">
+        <div class="container-fluid content-inner pb-0" id="page_layout">
 
             {{-- @include('flash::message') --}}
 
@@ -772,6 +950,8 @@
     {{-- <script src="{{ asset('js/setting-init.js') }}"></script> --}}
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('laravel-js/modal-view.js') }}" defer></script>
+    <script src="{{ asset('js/menu-visibility-fix.js') }}"></script>
+    <script src="{{ asset('js/navbar-search-center.js') }}"></script>
     <script>
       const currencyFormat = (amount) => {
         const DEFAULT_CURRENCY = JSON.parse(@json(json_encode(Currency::getDefaultCurrency(true))))
@@ -859,13 +1039,12 @@
       {!! setting('custom_js_block') !!}
 
     // dark and light mode code
-    const theme_mode = sessionStorage.getItem('theme_mode')
+    const theme_mode = sessionStorage.getItem('theme_mode') || localStorage.getItem('theme') || 'light'
     const element = document.querySelector('html');
-    if(theme_mode === null ){
-        element.setAttribute('data-bs-theme', 'light')
-    } else {
-        document.documentElement.setAttribute('data-bs-theme', theme_mode)
-    }
+    
+    // Set theme based on user preference
+    element.setAttribute('data-bs-theme', theme_mode)
+    sessionStorage.setItem('theme_mode', theme_mode)
     </script>
 
 </body>

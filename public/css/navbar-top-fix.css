@@ -1,0 +1,110 @@
+/**
+ * Navbar Top Position Fix
+ * Forces navbar to be positioned at the very top of the page
+ */
+
+/* Remove any body padding that pushes content down */
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Force navbar to the absolute top with highest z-index */
+.iq-navbar,
+.navbar,
+header.iq-navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    z-index: 9999 !important; /* Highest z-index to ensure it's on top */
+    width: 100% !important;
+    transform: translateY(0) !important; /* Ensure no transform moves it */
+}
+
+/* Remove any wrapper padding */
+.wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Adjust main content to start below fixed navbar */
+.main-content {
+    margin-top: calc(70px + 15vh) !important; /* 70px navbar + 15% viewport height */
+    padding-top: 0 !important;
+}
+
+/* Remove any position-relative wrapper that might push navbar down */
+.position-relative.iq-banner,
+.position-relative.default {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Content spacing remains the same, just starts after navbar */
+.content-inner,
+.container-fluid.content-inner,
+#page_layout {
+    /* Aggressively reduced spacing - push content up */
+    padding-top: 20px !important; /* Changed from 60px to 20px */
+}
+
+/* Dashboard special spacing - Push to top */
+.dashboard-container,
+body.dashboard-page .content-inner,
+body[class*="dashboard"] .content-inner,
+.main-content .content-inner:has(.dashboard-container) {
+    padding-top: 10px !important; /* Reduced from 15px to 10px */
+}
+
+/* Target dashboard page specifically */
+body:has(.dashboard-container) .content-inner,
+body:has(.modern-dashboard) .content-inner {
+    padding-top: 10px !important; /* Reduced from 15px to 10px */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        margin-top: calc(60px + 15vh) !important; /* 60px navbar + 15% viewport height on mobile */
+    }
+    
+    .content-inner,
+    .container-fluid.content-inner,
+    #page_layout {
+        padding-top: 15px !important; /* Changed from 40px to 15px */
+    }
+    
+    .dashboard-container,
+    body.dashboard-page .content-inner,
+    body[class*="dashboard"] .content-inner,
+    .main-content .content-inner:has(.dashboard-container),
+    body:has(.dashboard-container) .content-inner,
+    body:has(.modern-dashboard) .content-inner {
+        padding-top: 5px !important; /* Reduced from 10px to 5px */
+    }
+}
+
+/* Ensure no inline styles can override navbar position */
+.iq-navbar[style*="margin-top"],
+.iq-navbar[style*="position"] {
+    position: fixed !important;
+    top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Force navbar to stay at absolute top */
+html body header.iq-navbar,
+html body nav.iq-navbar,
+html body .iq-navbar {
+    top: 0 !important;
+    position: fixed !important;
+    transform: none !important;
+} 

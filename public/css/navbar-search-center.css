@@ -1,0 +1,141 @@
+/**
+ * Navbar Search Center Positioning
+ * Centers the search bar in the navbar
+ */
+
+/* Center the navbar content using flexbox */
+.iq-navbar .container-fluid,
+.iq-navbar .navbar-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    height: 100% !important;
+}
+
+/* Position search in the absolute center (both horizontally and vertically) */
+.modern-search-container {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+}
+
+/* Remove any conflicting margins or flex properties */
+.modern-search-container.mx-3,
+.modern-search-container.flex-grow-1 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    flex-grow: 0 !important;
+}
+
+/* Ensure the navbar brand stays on the left */
+.iq-navbar .navbar-brand {
+    position: relative !important;
+    z-index: 11 !important;
+    margin-right: auto !important;
+}
+
+/* Ensure the sidebar toggle stays positioned correctly */
+.iq-navbar .sidebar-toggle {
+    position: relative !important;
+    z-index: 11 !important;
+    margin-right: 1rem !important;
+}
+
+/* Right side actions should stay on the right */
+.iq-navbar .right-data {
+    position: relative !important;
+    z-index: 11 !important;
+    margin-left: auto !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    /* Hide search on mobile since there's a separate modal */
+    .modern-search-container {
+        display: none !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .modern-search-container {
+        max-width: 400px !important;
+    }
+}
+
+/* Larger screens - ensure search stays centered */
+@media (min-width: 1200px) {
+    .modern-search-container {
+        max-width: 600px !important;
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1400px) {
+    .modern-search-container {
+        max-width: 700px !important;
+    }
+}
+
+/* Ensure search input is properly styled */
+.modern-search-input-wrapper {
+    width: 100% !important;
+}
+
+.modern-search-input {
+    width: 100% !important;
+}
+
+/* Adjust spacing to prevent overlap */
+.iq-navbar .navbar-brand,
+.iq-navbar .sidebar-toggle {
+    min-width: fit-content !important;
+    flex-shrink: 0 !important;
+}
+
+.iq-navbar .right-data {
+    min-width: fit-content !important;
+    flex-shrink: 0 !important;
+}
+
+/* Ensure proper layering */
+.modern-search-results {
+    z-index: 1055 !important;
+    position: absolute !important;
+    top: calc(100% + 0.5rem) !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+/* Fix for very wide screens */
+@media (min-width: 1920px) {
+    .modern-search-container {
+        max-width: 800px !important;
+    }
+}
+
+/* Ensure navbar height is consistent */
+.iq-navbar {
+    height: 70px !important;
+}
+
+.iq-navbar .container-fluid,
+.iq-navbar .navbar-inner {
+    height: 100% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Override any styles that might push search out of center */
+html body .modern-search-container {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+} 

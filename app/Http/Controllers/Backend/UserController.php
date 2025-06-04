@@ -1129,23 +1129,20 @@ class UserController extends Controller
 
     public function updateData(Request $request)
     {
-        $user = Auth::user();
-        $data = User::findOrFail($user->id);
-        $request_data = $request->except('profile_image');
-        $data->update($request_data);
+        $data = User::findOrFail($request->id);
+        $user = $request->only($data->getFillable());
+        $data->update($user);
+        return response()->json(['status' => true]);
+    }
 
-        if ($request->custom_fields_data) {
-
-            $data->updateCustomFieldData(json_decode($request->custom_fields_data));
-        }
-
-        if ($request->hasFile('profile_image')) {
-            storeMediaFile($data, $request->file('profile_image'), 'profile_image');
-        }
-
-        $message = __('messages.update_form', ['form' => __('customer.singular_title')]);
-
-        return response()->json(['message' => $message, 'status' => true], 200);
+    /**
+     * Display the user search page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        return view('backend.users.search');
     }
 
     public function change_password(Request $request)

@@ -1,0 +1,199 @@
+/* Alignment Fix for Sidebar and Dashboard - Futuristic Theme Compatible */
+
+/* Base layout structure */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Fix main content wrapper positioning */
+.main-content.wrapper {
+    margin-left: 260px !important; /* Standard sidebar width */
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 260px) !important;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* When sidebar is in different states */
+.sidebar-mini .main-content.wrapper,
+body[data-sidebar-toggle="sidebar-mini"] .main-content.wrapper {
+    margin-left: 80px !important;
+    width: calc(100% - 80px) !important;
+}
+
+/* When sidebar is hidden */
+.sidebar-none .main-content.wrapper,
+body[data-sidebar-toggle="sidebar-none"] .main-content.wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+
+/* Ensure sidebar has proper width and position */
+.sidebar-base {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 260px !important;
+    z-index: 1040;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Sidebar mini mode */
+.sidebar-mini .sidebar-base,
+body[data-sidebar-toggle="sidebar-mini"] .sidebar-base {
+    width: 80px !important;
+}
+
+/* Sidebar hover expansion in mini mode */
+.sidebar-mini .sidebar-base:hover,
+body[data-sidebar-toggle="sidebar-mini"] .sidebar-base:hover {
+    width: 260px !important;
+}
+
+/* Sidebar hidden mode */
+.sidebar-none .sidebar-base,
+body[data-sidebar-toggle="sidebar-none"] .sidebar-base {
+    transform: translateX(-100%);
+}
+
+/* Fix content inner spacing */
+.content-inner {
+    padding-top: 1rem !important;
+    flex: 1;
+    width: 100%;
+}
+
+/* Fix header position and width */
+.iq-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* Remove unwanted spacing from banner wrapper */
+.main-content .position-relative.default:not(.iq-banner) {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+/* If banner is not present, hide the wrapper */
+.main-content .position-relative.default:not(.iq-banner):empty {
+    display: none !important;
+}
+
+/* Ensure proper content flow */
+.main-content > .position-relative {
+    flex-shrink: 0;
+}
+
+.main-content > .container-fluid {
+    flex: 1;
+}
+
+/* Footer positioning */
+.footer {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .sidebar-base {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar-open .sidebar-base,
+    body.sidebar-active .sidebar-base {
+        transform: translateX(0) !important;
+    }
+    
+    .main-content.wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Add backdrop for mobile */
+    body.sidebar-active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1039;
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 575px) {
+    .content-inner {
+        padding: 1rem 0.5rem !important;
+    }
+}
+
+/* Ensure proper scrolling */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+}
+
+.main-content {
+    overflow-x: hidden;
+}
+
+/* Fix z-index layering for futuristic theme */
+#loading {
+    z-index: 9999;
+}
+
+.sidebar-base {
+    z-index: 1040;
+}
+
+.iq-navbar {
+    z-index: 1030;
+}
+
+.modal {
+    z-index: 1050;
+}
+
+.modal-backdrop {
+    z-index: 1045;
+}
+
+.iq-sub-dropdown {
+    z-index: 1035;
+}
+
+/* Ensure futuristic effects don't break layout */
+.sidebar-base::before,
+.sidebar-base::after {
+    pointer-events: none;
+}
+
+body::before,
+body::after {
+    pointer-events: none;
+    position: fixed;
+}
+
+/* Specific fixes for dashboard pages */
+body[class*="dashboard"] .content-inner,
+.main-content[data-page="dashboard"] .content-inner {
+    padding-top: 1rem !important;
+} 

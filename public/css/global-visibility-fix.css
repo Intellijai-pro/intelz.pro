@@ -1,0 +1,345 @@
+/**
+ * Global Visibility Fixes
+ * Ensures all menus, dropdowns, and UI elements are fully visible
+ */
+
+/* Remove any overflow hidden that might cut off menus */
+.iq-navbar,
+.iq-navbar .container,
+.iq-navbar .container-fluid,
+.navbar,
+.navbar-nav,
+.header-hover-menu {
+    overflow: visible !important;
+}
+
+/* Ensure all dropdowns are on top */
+.dropdown-menu,
+.iq-sub-dropdown,
+.submenu,
+.sub-nav {
+    z-index: 1055 !important;
+    position: absolute !important;
+}
+
+/* Fix header positioning */
+header,
+.header,
+.iq-navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1030 !important;
+    margin-top: 0 !important;
+}
+
+/* Ensure sidebar doesn't overlap content */
+.sidebar-base {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    z-index: 1025 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Fix main content area */
+.main-content {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-left: 260px !important;
+    transition: margin-left 0.3s ease;
+    padding-top: 80px !important;
+    margin-top: 60px !important;
+}
+
+.sidebar-mini .main-content {
+    margin-left: 70px !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 1199px) {
+    .main-content {
+        margin-left: 0 !important;
+    }
+}
+
+/* Ensure content doesn't hide behind header */
+.content-inner,
+#page_layout {
+    padding-top: 60px !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Add extra spacing after header banner */
+.position-relative.iq-banner + .content-inner,
+.position-relative.default + .content-inner {
+    padding-top: 80px !important;
+}
+
+/* Ensure consistent spacing for all page types */
+.main-content .content-inner {
+    min-height: calc(100vh - 350px) !important;
+}
+
+/* Add breathing room to page titles */
+.page-title,
+.iq-navbar-header {
+    margin-bottom: 5rem !important;
+    padding-bottom: 4rem !important;
+}
+
+/* Dashboard specific spacing */
+.dashboard-container {
+    padding-top: 15px !important;
+}
+
+/* Settings and other pages spacing */
+.container-fluid > .row:first-child {
+    margin-top: 6rem !important;
+}
+
+/* Breadcrumb spacing */
+.breadcrumb-item,
+.iq-navbar-header .breadcrumb {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Card spacing from top */
+.card:first-child,
+.modern-card:first-child {
+    margin-top: 1rem !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .content-inner,
+    #page_layout {
+        padding-top: 40px !important;
+    }
+    
+    .position-relative.iq-banner + .content-inner,
+    .position-relative.default + .content-inner {
+        padding-top: 50px !important;
+    }
+    
+    .dashboard-container {
+        padding-top: 2rem !important;
+    }
+    
+    .main-content {
+        padding-top: 20px !important;
+    }
+    
+    .iq-navbar {
+        margin-bottom: 0 !important;
+    }
+    
+    body .main-content .container-fluid:first-of-type,
+    body .main-content .container:first-of-type {
+        padding-top: 20px !important;
+    }
+}
+
+/* Fix notification dropdowns */
+.notification_list .iq-sub-dropdown,
+.iq-user-dropdown .iq-sub-dropdown,
+.iq-sub-drop {
+    position: absolute !important;
+    top: 100% !important;
+    margin-top: 10px !important;
+    z-index: 1055 !important;
+}
+
+/* Fix breadcrumb visibility */
+.iq-navbar-header,
+.breadcrumb,
+.page-header {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Ensure modals are always on top */
+.modal {
+    z-index: 1060 !important;
+}
+
+.modal-backdrop {
+    z-index: 1050 !important;
+}
+
+/* Fix tooltips */
+.tooltip {
+    z-index: 1070 !important;
+}
+
+/* Ensure buttons and links are clickable */
+.btn,
+.nav-link,
+.dropdown-toggle,
+a {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Fix any hidden overflow issues */
+.card,
+.card-body,
+.card-header {
+    overflow: visible !important;
+}
+
+/* Ensure tables don't cut off dropdowns */
+.table-responsive {
+    overflow: visible !important;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto !important;
+    }
+}
+
+/* Fix sidebar submenus */
+.iq-sidebar-menu .collapse,
+.iq-sidebar-menu .collapsing,
+.iq-sidebar-menu .show {
+    overflow: visible !important;
+    z-index: 10 !important;
+}
+
+/* Ensure badges are visible */
+.badge,
+.label,
+.tag {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Fix any position fixed elements */
+.position-fixed {
+    z-index: 1020 !important;
+}
+
+/* Ensure form elements are accessible */
+.form-control,
+.form-select,
+select,
+input,
+textarea {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Fix dropdown inside tables */
+.table .dropdown-menu {
+    position: fixed !important;
+    z-index: 1055 !important;
+}
+
+/* Ensure icons are visible */
+i,
+svg,
+.icon {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Fix any absolute positioned elements */
+.position-absolute {
+    z-index: 10 !important;
+}
+
+/* Global fix for cut-off content */
+* {
+    clip: unset !important;
+    clip-path: unset !important;
+}
+
+/* Ensure search results are visible */
+.search-results,
+.search-dropdown,
+.autocomplete-results {
+    position: absolute !important;
+    z-index: 1055 !important;
+    overflow: visible !important;
+}
+
+/* Fix sticky elements */
+.sticky-top {
+    z-index: 1020 !important;
+}
+
+/* Ensure no content is hidden */
+.overflow-hidden {
+    overflow: visible !important;
+}
+
+/* Fix for specific Laravel/Bootstrap issues */
+.navbar-collapse {
+    overflow: visible !important;
+}
+
+.navbar-toggler {
+    z-index: 1025 !important;
+}
+
+/* Dark mode specific fixes */
+[data-bs-theme="dark"] .dropdown-menu,
+[data-bs-theme="dark"] .iq-sub-dropdown {
+    background-color: rgba(26, 26, 46, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Additional global spacing */
+body .main-content .container-fluid:first-of-type,
+body .main-content .container:first-of-type {
+    padding-top: 40px !important;
+}
+
+/* Header bottom spacing */
+.iq-navbar {
+    margin-bottom: 0 !important;
+}
+
+/* Extra push for all content */
+.content-inner > div:first-child,
+.content-inner > section:first-child {
+    margin-top: 50px !important;
+}
+
+/* ULTIMATE SPACING OVERRIDE - Force maximum spacing on all pages */
+body .main-content .content-inner,
+body .container-fluid.content-inner,
+body #page_layout {
+    padding-top: 60px !important;
+    min-padding-top: 60px !important;
+}
+
+/* Dashboard gets minimal space - right under navbar */
+body .dashboard-container,
+body.dashboard-page .content-inner,
+body:has(.dashboard-container) .content-inner,
+body:has(.modern-dashboard) .content-inner {
+    padding-top: 15px !important;
+    min-padding-top: 15px !important;
+}
+
+/* Force vertical rhythm */
+body * {
+    line-height: 1.5 !important;
+}
+
+/* Ensure no element can reduce the spacing */
+.content-inner[style*="padding-top"] {
+    padding-top: 60px !important;
+}
+
+/* Adjust wrapper to account for fixed navbar */
+.wrapper {
+    padding-top: 0 !important;
+} 

@@ -1,0 +1,270 @@
+/* ===== COMPREHENSIVE LIGHT MODE ICON VISIBILITY FIXES ===== */
+/* This file ensures ALL icons are visible in light mode, including converting white icons to dark */
+
+/* Force ALL icons to be visible in light mode */
+[data-bs-theme="light"] i,
+[data-bs-theme="light"] svg,
+body:not([data-bs-theme="dark"]) i,
+body:not([data-bs-theme="dark"]) svg {
+    color: var(--modern-gray-700, #525F7F) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    -webkit-text-fill-color: var(--modern-gray-700, #525F7F) !important;
+    text-shadow: none !important;
+    transform: none !important;
+}
+
+/* Convert white icons to dark in light mode */
+[data-bs-theme="light"] i.text-white,
+[data-bs-theme="light"] .text-white i,
+[data-bs-theme="light"] .bg-white i,
+[data-bs-theme="light"] .btn-primary i,
+[data-bs-theme="light"] .btn-success i,
+[data-bs-theme="light"] .btn-info i,
+[data-bs-theme="light"] .btn-warning i,
+[data-bs-theme="light"] .btn-danger i,
+[data-bs-theme="light"] .badge i,
+[data-bs-theme="light"] .stats-icon i,
+[data-bs-theme="light"] .welcome-card i,
+[data-bs-theme="light"] .bg-gradient-primary i,
+[data-bs-theme="light"] .bg-gradient-success i,
+[data-bs-theme="light"] .bg-gradient-info i,
+[data-bs-theme="light"] .bg-gradient-warning i,
+[data-bs-theme="light"] .bg-gradient-danger i,
+body:not([data-bs-theme="dark"]) i.text-white,
+body:not([data-bs-theme="dark"]) .text-white i,
+body:not([data-bs-theme="dark"]) .bg-white i,
+body:not([data-bs-theme="dark"]) .btn-primary i,
+body:not([data-bs-theme="dark"]) .btn-success i,
+body:not([data-bs-theme="dark"]) .btn-info i,
+body:not([data-bs-theme="dark"]) .btn-warning i,
+body:not([data-bs-theme="dark"]) .btn-danger i,
+body:not([data-bs-theme="dark"]) .badge i,
+body:not([data-bs-theme="dark"]) .stats-icon i,
+body:not([data-bs-theme="dark"]) .welcome-card i,
+body:not([data-bs-theme="dark"]) .bg-gradient-primary i,
+body:not([data-bs-theme="dark"]) .bg-gradient-success i,
+body:not([data-bs-theme="dark"]) .bg-gradient-info i,
+body:not([data-bs-theme="dark"]) .bg-gradient-warning i,
+body:not([data-bs-theme="dark"]) .bg-gradient-danger i {
+    color: var(--modern-gray-700, #525F7F) !important;
+    -webkit-text-fill-color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Stats cards icons - ensure contrast in light mode */
+[data-bs-theme="light"] .stats-icon,
+body:not([data-bs-theme="dark"]) .stats-icon {
+    background: var(--modern-gray-100, #F6F9FC) !important;
+    border: 1px solid var(--modern-gray-300, #DEE2E6) !important;
+}
+
+[data-bs-theme="light"] .stats-icon i,
+body:not([data-bs-theme="dark"]) .stats-icon i {
+    color: var(--modern-primary, #5E72E4) !important;
+}
+
+/* Header and navbar icons */
+[data-bs-theme="light"] header i,
+[data-bs-theme="light"] .navbar i,
+[data-bs-theme="light"] .iq-navbar i,
+[data-bs-theme="light"] .iq-navbar svg,
+body:not([data-bs-theme="dark"]) header i,
+body:not([data-bs-theme="dark"]) .navbar i,
+body:not([data-bs-theme="dark"]) .iq-navbar i,
+body:not([data-bs-theme="dark"]) .iq-navbar svg {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Sidebar icons */
+[data-bs-theme="light"] .sidebar i,
+[data-bs-theme="light"] .iq-sidebar i,
+[data-bs-theme="light"] .iq-main-menu i,
+[data-bs-theme="light"] .sidebar-base i,
+body:not([data-bs-theme="dark"]) .sidebar i,
+body:not([data-bs-theme="dark"]) .iq-sidebar i,
+body:not([data-bs-theme="dark"]) .iq-main-menu i,
+body:not([data-bs-theme="dark"]) .sidebar-base i {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Active menu items */
+[data-bs-theme="light"] .nav-link.active i,
+[data-bs-theme="light"] .active i,
+body:not([data-bs-theme="dark"]) .nav-link.active i,
+body:not([data-bs-theme="dark"]) .active i {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* All Phosphor icons specifically */
+[data-bs-theme="light"] [class^="ph-"],
+[data-bs-theme="light"] [class*=" ph-"],
+body:not([data-bs-theme="dark"]) [class^="ph-"],
+body:not([data-bs-theme="dark"]) [class*=" ph-"] {
+    color: var(--modern-gray-700, #525F7F) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Transaction type indicators - keep white on colored backgrounds */
+[data-bs-theme="light"] .transaction-type-indicator i,
+body:not([data-bs-theme="dark"]) .transaction-type-indicator i {
+    color: white !important;
+}
+
+/* Empty state icons */
+[data-bs-theme="light"] .empty-state i,
+body:not([data-bs-theme="dark"]) .empty-state i {
+    color: var(--modern-gray-500, #ADB5BD) !important;
+}
+
+/* Override any inline styles */
+[data-bs-theme="light"] *[style*="color: white"] i,
+[data-bs-theme="light"] *[style*="color:#fff"] i,
+[data-bs-theme="light"] *[style*="color:#ffffff"] i,
+[data-bs-theme="light"] *[style*="color: rgb(255, 255, 255)"] i,
+body:not([data-bs-theme="dark"]) *[style*="color: white"] i,
+body:not([data-bs-theme="dark"]) *[style*="color:#fff"] i,
+body:not([data-bs-theme="dark"]) *[style*="color:#ffffff"] i,
+body:not([data-bs-theme="dark"]) *[style*="color: rgb(255, 255, 255)"] i {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Buttons and Badges */
+[data-bs-theme="light"] .btn i,
+[data-bs-theme="light"] .badge i,
+body:not([data-bs-theme="dark"]) .btn i,
+body:not([data-bs-theme="dark"]) .badge i {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Fix any SVG icons */
+[data-bs-theme="light"] svg path,
+[data-bs-theme="light"] svg circle,
+[data-bs-theme="light"] svg rect,
+[data-bs-theme="light"] svg polygon,
+[data-bs-theme="light"] svg polyline,
+[data-bs-theme="light"] svg line,
+body:not([data-bs-theme="dark"]) svg path,
+body:not([data-bs-theme="dark"]) svg circle,
+body:not([data-bs-theme="dark"]) svg rect,
+body:not([data-bs-theme="dark"]) svg polygon,
+body:not([data-bs-theme="dark"]) svg polyline,
+body:not([data-bs-theme="dark"]) svg line {
+    fill: var(--modern-gray-700, #525F7F) !important;
+    stroke: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* SVG icons that should not have stroke */
+[data-bs-theme="light"] svg.no-stroke path,
+[data-bs-theme="light"] svg.no-stroke circle,
+body:not([data-bs-theme="dark"]) svg.no-stroke path,
+body:not([data-bs-theme="dark"]) svg.no-stroke circle {
+    stroke: none !important;
+}
+
+/* Hover states should maintain visibility */
+[data-bs-theme="light"] *:hover i,
+body:not([data-bs-theme="dark"]) *:hover i {
+    color: var(--modern-primary, #5E72E4) !important;
+    opacity: 1 !important;
+}
+
+/* Ensure all Font Awesome icons are visible too */
+[data-bs-theme="light"] .fa,
+[data-bs-theme="light"] .fas,
+[data-bs-theme="light"] .far,
+[data-bs-theme="light"] .fal,
+[data-bs-theme="light"] .fab,
+body:not([data-bs-theme="dark"]) .fa,
+body:not([data-bs-theme="dark"]) .fas,
+body:not([data-bs-theme="dark"]) .far,
+body:not([data-bs-theme="dark"]) .fal,
+body:not([data-bs-theme="dark"]) .fab {
+    color: var(--modern-gray-700, #525F7F) !important;
+    opacity: 1 !important;
+}
+
+/* Override futuristic theme icon colors */
+[data-bs-theme="light"] .iq-main-menu .nav-link svg,
+[data-bs-theme="light"] .iq-main-menu .nav-link i,
+body:not([data-bs-theme="dark"]) .iq-main-menu .nav-link svg,
+body:not([data-bs-theme="dark"]) .iq-main-menu .nav-link i {
+    color: currentColor !important;
+    filter: none !important;
+}
+
+/* User dropdown and menus */
+[data-bs-theme="light"] .iq-user-dropdown i,
+[data-bs-theme="light"] .dropdown-menu i,
+[data-bs-theme="light"] .dropdown-toggle i,
+body:not([data-bs-theme="dark"]) .iq-user-dropdown i,
+body:not([data-bs-theme="dark"]) .dropdown-menu i,
+body:not([data-bs-theme="dark"]) .dropdown-toggle i {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Table action buttons */
+[data-bs-theme="light"] td .btn i,
+[data-bs-theme="light"] .btn-group .btn i,
+[data-bs-theme="light"] .transaction-actions i,
+body:not([data-bs-theme="dark"]) td .btn i,
+body:not([data-bs-theme="dark"]) .btn-group .btn i,
+body:not([data-bs-theme="dark"]) .transaction-actions i {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Specific icon classes */
+[data-bs-theme="light"] .ph-magnifying-glass,
+[data-bs-theme="light"] .ph-bell,
+[data-bs-theme="light"] .ph-user,
+[data-bs-theme="light"] .ph-gear,
+[data-bs-theme="light"] .ph-sign-out,
+[data-bs-theme="light"] .ph-dots-three-vertical,
+[data-bs-theme="light"] .ph-eye,
+[data-bs-theme="light"] .ph-download-simple,
+[data-bs-theme="light"] .ph-envelope-simple,
+[data-bs-theme="light"] .ph-arrow-u-up-left,
+[data-bs-theme="light"] .ph-warning,
+[data-bs-theme="light"] .ph-funnel,
+[data-bs-theme="light"] .ph-arrows-clockwise,
+body:not([data-bs-theme="dark"]) .ph-magnifying-glass,
+body:not([data-bs-theme="dark"]) .ph-bell,
+body:not([data-bs-theme="dark"]) .ph-user,
+body:not([data-bs-theme="dark"]) .ph-gear,
+body:not([data-bs-theme="dark"]) .ph-sign-out,
+body:not([data-bs-theme="dark"]) .ph-dots-three-vertical,
+body:not([data-bs-theme="dark"]) .ph-eye,
+body:not([data-bs-theme="dark"]) .ph-download-simple,
+body:not([data-bs-theme="dark"]) .ph-envelope-simple,
+body:not([data-bs-theme="dark"]) .ph-arrow-u-up-left,
+body:not([data-bs-theme="dark"]) .ph-warning,
+body:not([data-bs-theme="dark"]) .ph-funnel,
+body:not([data-bs-theme="dark"]) .ph-arrows-clockwise {
+    color: var(--modern-gray-700, #525F7F) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+}
+
+/* Absolutely ensure visibility with max specificity */
+html[data-bs-theme="light"] body i,
+html[data-bs-theme="light"] body svg,
+html:not([data-bs-theme="dark"]) body i,
+html:not([data-bs-theme="dark"]) body svg {
+    color: var(--modern-gray-700, #525F7F) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Override any color classes for icons in light mode */
+[data-bs-theme="light"] i[class*="text-"],
+body:not([data-bs-theme="dark"]) i[class*="text-"] {
+    color: var(--modern-gray-700, #525F7F) !important;
+}
+
+/* Ensure icons with important colors are still visible */
+[data-bs-theme="light"] i[style*="important"],
+body:not([data-bs-theme="dark"]) i[style*="important"] {
+    color: var(--modern-gray-700, #525F7F) !important;
+} 

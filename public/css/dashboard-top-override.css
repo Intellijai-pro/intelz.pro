@@ -1,0 +1,185 @@
+/**
+ * Dashboard Top Override
+ * Forces dashboard content to start right under navbar
+ */
+
+/* Dashboard specific overrides with highest priority */
+body:has(.dashboard-container) .content-inner,
+body:has(.modern-dashboard) .content-inner,
+body:has(.welcome-section) .content-inner,
+.main-content:has(.dashboard-container) .content-inner,
+#page_layout:has(.dashboard-container),
+.content-inner:has(.dashboard-container) {
+    padding-top: 15px !important;
+    min-padding-top: unset !important;
+}
+
+/* Target dashboard container directly */
+.dashboard-container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Welcome section at top */
+.welcome-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* First element in dashboard should have no margin */
+.dashboard-container > *:first-child,
+.content-inner:has(.dashboard-container) > *:first-child {
+    margin-top: 0 !important;
+}
+
+/* Override any inline styles */
+.dashboard-container[style*="padding-top"],
+.content-inner:has(.dashboard-container)[style*="padding-top"] {
+    padding-top: 15px !important;
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+    body:has(.dashboard-container) .content-inner,
+    body:has(.modern-dashboard) .content-inner,
+    body:has(.welcome-section) .content-inner,
+    .main-content:has(.dashboard-container) .content-inner,
+    #page_layout:has(.dashboard-container),
+    .content-inner:has(.dashboard-container) {
+        padding-top: 10px !important;
+    }
+}
+
+/* Ensure no other rule can override */
+html body .main-content .content-inner:has(.dashboard-container),
+html body .main-content .content-inner:has(.modern-dashboard),
+html body .main-content .content-inner:has(.welcome-section) {
+    padding-top: 15px !important;
+}
+
+/* ============================================
+   GLOBAL BODY PUSH UP - Apply to ALL pages
+   ============================================ */
+
+/* Push ALL content down by 15% of viewport height */
+html body .main-content {
+    padding-top: 0 !important;
+    margin-top: calc(70px + 15vh) !important; /* 70px navbar + 15% viewport height */
+}
+
+/* Reduce content-inner padding for ALL pages */
+html body .content-inner,
+html body .container-fluid.content-inner,
+html body #page_layout {
+    padding-top: 20px !important; /* Reduced from 60px */
+}
+
+/* Special handling for pages with banners */
+html body .position-relative.iq-banner + .content-inner,
+html body .position-relative.default + .content-inner {
+    padding-top: 30px !important; /* Reduced from 80px */
+}
+
+/* Remove extra margins from first elements */
+html body .content-inner > *:first-child,
+html body .main-content > *:first-child {
+    margin-top: 0 !important;
+}
+
+/* Reduce page header spacing */
+html body .page-header,
+html body .page-title-box,
+html body .iq-navbar-header {
+    margin-bottom: 1.5rem !important; /* Reduced from 5rem */
+    padding-bottom: 1rem !important; /* Reduced from 4rem */
+}
+
+/* Reduce breadcrumb spacing */
+html body .breadcrumb-item,
+html body .iq-navbar-header .breadcrumb {
+    margin-bottom: 0.5rem !important; /* Reduced from 1.5rem */
+}
+
+/* Container spacing reduction */
+html body .container-fluid > .row:first-child {
+    margin-top: 1rem !important; /* Reduced from 6rem */
+}
+
+/* Card spacing from top */
+html body .card:first-child,
+html body .modern-card:first-child {
+    margin-top: 0 !important; /* Reduced from 1rem */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    html body .main-content {
+        margin-top: calc(60px + 15vh) !important; /* 60px navbar + 15% viewport height on mobile */
+    }
+    
+    html body .content-inner,
+    html body .container-fluid.content-inner,
+    html body #page_layout {
+        padding-top: 15px !important; /* Reduced from 40px */
+    }
+    
+    html body .position-relative.iq-banner + .content-inner,
+    html body .position-relative.default + .content-inner {
+        padding-top: 20px !important; /* Reduced from 50px */
+    }
+    
+    html body .page-header,
+    html body .page-title-box,
+    html body .iq-navbar-header {
+        margin-bottom: 1rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+}
+
+/* Ultra high specificity to ensure these rules apply */
+html body div.main-content div.content-inner {
+    padding-top: 20px !important;
+}
+
+/* Dashboard gets even less space */
+html body div.main-content div.content-inner:has(.dashboard-container),
+html body div.main-content div.content-inner:has(.modern-dashboard) {
+    padding-top: 10px !important;
+}
+
+/* ============================================
+   NAVBAR ABSOLUTE TOP POSITIONING
+   ============================================ */
+
+/* Force navbar to absolute top with highest priority */
+html body .iq-navbar,
+html body header.iq-navbar,
+html body nav.iq-navbar,
+html body .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+}
+
+/* Ensure no element can push navbar down */
+html body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Remove any spacing before navbar */
+html body > *:first-child {
+    margin-top: 0 !important;
+}
+
+/* Ensure wrapper doesn't affect navbar position */
+html body .wrapper {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+} 

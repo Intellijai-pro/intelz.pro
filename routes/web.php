@@ -3,7 +3,7 @@
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\BranchController;
-use App\Http\Controllers\Backend\CustomerController;
+// use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
@@ -153,7 +153,7 @@ Route::group(['prefix' => 'app'], function () {
         Route::get('/get_popular_content_chart_data/{type}', [BackendController::class, 'getPopularContentchart']);
         Route::get('/get_subscription_chart_data/{type}', [BackendController::class, 'getSubscriptionchart']);
         Route::get('/get_users_data', [BackendController::class, 'getUserChartData']);
-        Route::get('/upgrade_account', [BackendController::class, 'UpgaradeAccount']);
+        Route::post('/upgrade_account', [BackendController::class, 'UpgaradeAccount'])->name('upgrade-account');
 
 
 
@@ -183,7 +183,7 @@ Route::group(['prefix' => 'app'], function () {
                 Route::patch('/changePassword/{id}', [UserController::class, 'changePasswordUpdate'])->name('changePasswordUpdate');
                 Route::get('/trashed', [UserController::class, 'trashed'])->name('trashed');
                 Route::patch('/trashed/{id}', [UserController::class, 'restore'])->name('restore');
-                Route::get('customer', [CustomerController::class, 'index'])->name('customer');
+                // Route::get('customer', [CustomerController::class, 'index'])->name('customer');
                 Route::get('/index_data/{role}', [UserController::class, 'index_data'])->name('index_data');
                 Route::get('/index_list', [UserController::class, 'index_list'])->name('index_list');
                 Route::get('/owner_list', [UserController::class, 'owner_list'])->name('owner_list');
@@ -196,6 +196,9 @@ Route::group(['prefix' => 'app'], function () {
                 Route::post('change-password', [UserController::class, 'change_password'])->name('change_password');
             });
             Route::resource('users', UserController::class);
+            
+            // Add search route
+            Route::get('users-search', [UserController::class, 'search'])->name('users.search');
         });
 
         Route::get('my-profile/{vue_capture?}', [UserController::class, 'myProfile'])->name('my-profile')->where('vue_capture', '^(?!storage).*$');

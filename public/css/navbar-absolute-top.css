@@ -1,0 +1,73 @@
+/**
+ * Navbar Absolute Top Positioning
+ * Ensures navbar is always at the very top of the page
+ */
+
+/* Remove ALL spacing that could push navbar down */
+* {
+    margin-top: 0 !important;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Force navbar to absolute top with maximum specificity and priority */
+html body .iq-navbar,
+html body header.iq-navbar,
+html body nav.iq-navbar,
+html body .navbar,
+body .iq-navbar,
+.iq-navbar {
+    position: fixed !important;
+    top: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+    bottom: auto !important;
+    z-index: 999999 !important; /* Maximum z-index */
+    margin: 0 !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
+    transform: translateY(0px) !important;
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Ensure navbar container doesn't have any offset */
+.iq-navbar > *,
+.iq-navbar .container,
+.iq-navbar .container-fluid {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remove any wrapper effects */
+.wrapper,
+.position-relative,
+.iq-banner,
+.default {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Ensure navbar is visible */
+.iq-navbar {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Override any transform or animation that might affect position */
+@keyframes navbar-fix {
+    from, to {
+        top: 0 !important;
+        transform: translateY(0) !important;
+    }
+}
+
+.iq-navbar {
+    animation: navbar-fix 1ms !important;
+} 
